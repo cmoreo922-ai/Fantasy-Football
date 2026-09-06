@@ -27,7 +27,11 @@ research process in `.claude/skills/weekly-picks/` using the reference docs belo
 | [docs/advanced-metrics.md](docs/advanced-metrics.md) | Target share, WOPR, air yards, snap share, red-zone usage, xFP — what actually predicts points |
 | [docs/vegas-and-context.md](docs/vegas-and-context.md) | Implied team totals, spreads, weather, injury news — the weekly context layer |
 | [docs/coaching-trends-2026.md](docs/coaching-trends-2026.md) | 2026 coaching/coordinator changes and what they mean for player usage |
-| [docs/data-sources.md](docs/data-sources.md) | Where to look each week for lines, ownership, injuries, snap counts |
+| [docs/2025-season-review.md](docs/2025-season-review.md) | Last season's point leaders and the durable lessons they teach |
+| [docs/player-movement-2026.md](docs/player-movement-2026.md) | Who switched teams, scheme fit, and preseason signals |
+| [docs/rookies-2026.md](docs/rookies-2026.md) | Rookie breakout candidates and how to time rookies in DFS |
+| [docs/injury-risk.md](docs/injury-risk.md) | Injury types, recurrence data, risk-scoring framework, 2026 watch list |
+| [docs/data-sources.md](docs/data-sources.md) | Where to look each week for lines, ownership, injuries, snap counts, premium data |
 
 ## Weekly outputs
 

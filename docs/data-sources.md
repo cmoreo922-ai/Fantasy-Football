@@ -28,6 +28,21 @@ prefer the freshest source for lines/injuries.)
   (ownership projections are the leverage input — worth finding each week)
 - Slate strategy articles: Stokastic NFL DFS hub, Establish The Run, 4for4
 
+## Premium data (worth considering at $100+/week stakes)
+
+- **PFF (PFF+ ~$100/yr, PFF Pro ~$200/yr):** player grades by facet, 50+
+  premium stats (EPA/play, success rate, coverage matchups), O-line/D-line
+  grades — best for matchup analysis (WR vs CB, OL vs DL pressure rates).
+- **Fantasy Points Data (~subscription):** hand-charted per-game data —
+  expected fantasy points, schedule-adjusted points allowed, separation
+  metrics. Best xFP source.
+- **NFL Next Gen Stats (free):** tracking data — separation, time to throw,
+  rush yards over expected. Free and underused.
+- Free workhorses: Pro-Football-Reference (usage/snaps), rbsdm.com-style EPA
+  dashboards, PlayerProfiler (opportunity metrics).
+- Note: Chris can paste screenshots/CSV exports from any of these into a
+  session and Claude will incorporate them into the weekly process.
+
 ## Weather
 - NFL weather sites / national forecast, checked Sat + Sun AM; wind speed at
   kickoff is the number that matters

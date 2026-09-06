@@ -48,6 +48,11 @@ red-zone role, touches) and pick:
 Apply the hierarchy in docs/advanced-metrics.md: role → environment → matchup
 → talent → price/ownership.
 
+For any player with an injury tag, recent return from injury, a new team, or
+rookie status, run the checks in docs/injury-risk.md, docs/player-movement-2026.md,
+and docs/rookies-2026.md (or invoke the player-eval skill) before recommending
+him — and state his risk level in the writeup.
+
 ## Step 4 — Split cash vs GPP
 
 - **Cash core:** highest floor per dollar, locked volume, chalk OK.
