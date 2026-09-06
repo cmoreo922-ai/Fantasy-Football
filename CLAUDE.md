@@ -4,6 +4,17 @@ This repo is a DraftKings NFL DFS + fantasy football research playbook, not a
 software project. The user (Chris) uses Claude sessions here to research which
 players to pick each week.
 
+## User profile (Chris's preferences)
+
+- Plays **DraftKings Classic** contests only (QB / 2 RB / 3 WR / TE / FLEX /
+  DST, $50K cap), NFL only, during the NFL season.
+- Stakes: **serious — $100+/week.** Bankroll discipline matters: log every
+  week's entries and results in `bankroll/2026-log.md`, keep single-slate
+  exposure ≤5–10% of bankroll, and flag it if losses are being chased.
+- Weekly deliverable: **both** a ranked player pool per position AND sample
+  cash + GPP lineups (use real DK salaries when Chris pastes them in;
+  otherwise organize picks by salary tier).
+
 ## How to behave in this repo
 
 - When asked for picks, lineups, "who should I play", or slate research, use
