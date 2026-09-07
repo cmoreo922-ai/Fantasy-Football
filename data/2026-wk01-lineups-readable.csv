@@ -1,0 +1,31 @@
+#,Type,QB,RB,RB,WR,WR,WR,TE,FLEX,DST,Salary,EstProj,SumOwn%
+1,CASH,Jared Goff $6000,Jahmyr Gibbs $8000,Bucky Irving $5700,Amon-Ra St. Brown $7500,DJ Moore $5600,Stefon Diggs $5200,Dallas Goedert $4100,MarShawn Lloyd $4800,Bears $2800,49700,130.0,183
+2,CASH,Jalen Hurts $6600,Jahmyr Gibbs $8000,Bucky Irving $5700,Amon-Ra St. Brown $7500,DJ Moore $5600,Stefon Diggs $5200,Juwan Johnson $3700,MarShawn Lloyd $4800,Bears $2800,49900,129.0,177
+3,CASH,Josh Allen $7000,Jahmyr Gibbs $8000,Omarion Hampton $6800,Ladd McConkey $5900,DJ Moore $5600,Stefon Diggs $5200,Juwan Johnson $3700,MarShawn Lloyd $4800,Bears $2800,49800,126.5,190
+4,CASH,Jared Goff $6000,Omarion Hampton $6800,Bucky Irving $5700,Amon-Ra St. Brown $7500,Ladd McConkey $5900,DJ Moore $5600,Dallas Goedert $4100,MarShawn Lloyd $4800,Bears $2800,49200,127.0,186
+5,CASH,Jalen Hurts $6600,Jahmyr Gibbs $8000,Bucky Irving $5700,Nico Collins $7000,DJ Moore $5600,Chris Godwin Jr. $5200,Dallas Goedert $4100,MarShawn Lloyd $4800,Bears $2800,49800,126.5,170
+6,GPP,Caleb Williams $6300,Derrick Henry $6700,Jordan Mason $5400,Tetairoa McMillan $6100,Terry McLaurin $5700,Luther Burden III $5500 (Q),Sam LaPorta $4400 (Q),Rico Dowdle $5200,Jaguars $3400,48700,110.0,90
+7,GPP,Jayden Daniels $6500,Derrick Henry $6700,David Montgomery $6000,Amon-Ra St. Brown $7500,Stefon Diggs $5200,Marvin Harrison Jr. $5000,Dallas Goedert $4100,Travis Etienne Jr. $5900,Bears $2800,49700,119.5,105
+8,GPP,Jayden Daniels $6500,Saquon Barkley $6900,Rico Dowdle $5200,Nico Collins $7000,Terry McLaurin $5700,Stefon Diggs $5200,Colston Loveland $5300,MarShawn Lloyd $4800,Jaguars $3400,50000,118.0,131
+9,GPP,Justin Herbert $6100,Jahmyr Gibbs $8000,Omarion Hampton $6800,Ladd McConkey $5900,Terry McLaurin $5700,DJ Moore $5600,Harold Fannin Jr. $4200,Tyler Allgeier $4900,Bears $2800,50000,122.0,156
+10,GPP,Joe Burrow $6900,Bucky Irving $5700,MarShawn Lloyd $4800,Ja'Marr Chase $7800 (Q),Jameson Williams $6000,Chris Godwin Jr. $5200,Harold Fannin Jr. $4200,Stefon Diggs $5200,Bills $3100,48900,121.0,145
+11,GPP,Trevor Lawrence $5800,Derrick Henry $6700,Kaleb Johnson $4400,Tee Higgins $6300 (Q),Emeka Egbuka $6200 (Q),Brian Thomas Jr. $5500,Brock Bowers $6900,Keon Coleman $4000 (Q),Lions $3200,49000,109.5,80
+12,GPP,Trevor Lawrence $5800,Bucky Irving $5700,Quinshon Judkins $5500,Amon-Ra St. Brown $7500,Alec Pierce $5700,DJ Moore $5600,Colston Loveland $5300,Brian Thomas Jr. $5500,Bears $2800,49400,115.0,99
+13,GPP,Josh Allen $7000,MarShawn Lloyd $4800,Braelon Allen $4700,Nico Collins $7000,Drake London $6500,Emeka Egbuka $6200 (Q),Dalton Kincaid $4600,DJ Moore $5600,Jaguars $3400,49800,118.0,139
+14,GPP,Jalen Hurts $6600,De'Von Achane $7000,MarShawn Lloyd $4800,DeVonta Smith $6600,Christian Watson $5900,Chris Godwin Jr. $5200,Mark Andrews $3900,Stefon Diggs $5200,Steelers $3300,48500,114.0,120
+15,GPP,Justin Herbert $6100,Jonathan Taylor $7300,David Montgomery $6000,Ladd McConkey $5900,Michael Wilson $5300,Tre' Harris $3800 (Q),Trey McBride $6800,Rico Dowdle $5200,Steelers $3300,49700,114.0,91
+16,GPP,Baker Mayfield $5900,Jahmyr Gibbs $8000,Omarion Hampton $6800,DJ Moore $5600,Chris Godwin Jr. $5200,Marvin Harrison Jr. $5000,Dalton Kincaid $4600,Rico Dowdle $5200,Ravens $3000,49300,118.0,123
+17,GPP,Joe Burrow $6900,Bucky Irving $5700,Tyler Allgeier $4900,Ja'Marr Chase $7800 (Q),Tee Higgins $6300 (Q),Emeka Egbuka $6200 (Q),Sam LaPorta $4400 (Q),MarShawn Lloyd $4800,Ravens $3000,50000,122.5,163
+18,GPP,Trevor Lawrence $5800,Jahmyr Gibbs $8000,Omarion Hampton $6800,Ladd McConkey $5900,DJ Moore $5600,Brian Thomas Jr. $5500,Colston Loveland $5300,Tre' Harris $3800 (Q),Bears $2800,49500,118.0,134
+19,GPP,Jayden Daniels $6500,Jahmyr Gibbs $8000,MarShawn Lloyd $4800,DeVonta Smith $6600,Jordan Addison $5800,Luther Burden III $5500 (Q),Dallas Goedert $4100,Stefon Diggs $5200,Jaguars $3400,49900,118.5,145
+20,GPP,Justin Herbert $6100,De'Von Achane $7000,Jordan Mason $5400,Ladd McConkey $5900,Michael Wilson $5300,Stefon Diggs $5200,Brock Bowers $6900,MarShawn Lloyd $4800,Texans $2900,49500,114.5,121
+21,GPP,Baker Mayfield $5900,Jonathan Taylor $7300,Jaylen Warren $5400,Tee Higgins $6300 (Q),Emeka Egbuka $6200 (Q),Michael Wilson $5300,Colston Loveland $5300,MarShawn Lloyd $4800,Jaguars $3400,49900,115.0,121
+22,GPP,Trevor Lawrence $5800,Omarion Hampton $6800,MarShawn Lloyd $4800,Drake London $6500,Tee Higgins $6300 (Q),Jameson Williams $6000,Tucker Kraft $4500 (Q),Brian Thomas Jr. $5500,Lions $3200,49400,119.0,129
+23,GPP,Jared Goff $6000,Bucky Irving $5700,Jaylen Warren $5400,Amon-Ra St. Brown $7500,Drake London $6500,Ladd McConkey $5900,Sam LaPorta $4400 (Q),Juwan Johnson $3700,Chargers $3500,48600,119.5,131
+24,GPP,Jayden Daniels $6500,David Montgomery $6000,Jaylen Warren $5400,Ja'Marr Chase $7800 (Q),Terry McLaurin $5700,Luther Burden III $5500 (Q),Dallas Goedert $4100,MarShawn Lloyd $4800,Bears $2800,48600,114.0,134
+25,GPP,Justin Herbert $6100,De'Von Achane $7000,Tyler Allgeier $4900,Jameson Williams $6000,Ladd McConkey $5900,Terry McLaurin $5700,Trey McBride $6800,Sam LaPorta $4400 (Q),Lions $3200,50000,118.5,112
+26,GPP,Joe Burrow $6900,MarShawn Lloyd $4800,Braelon Allen $4700,Ja'Marr Chase $7800 (Q),Tetairoa McMillan $6100,Terry McLaurin $5700,Dalton Kincaid $4600,Brian Thomas Jr. $5500,Steelers $3300,49400,117,132
+27,GPP,Jared Goff $6000,James Cook III $7200,Jordan Mason $5400,Amon-Ra St. Brown $7500,Chris Olave $6700,Rome Odunze $5400 (Q),Sam LaPorta $4400 (Q),Keon Coleman $4000 (Q),Eagles $3200,49800,118.0,92
+28,GPP,Jared Goff $6000,Jahmyr Gibbs $8000,MarShawn Lloyd $4800,Amon-Ra St. Brown $7500,Alec Pierce $5700,Brian Thomas Jr. $5500,Sam LaPorta $4400 (Q),Juwan Johnson $3700,Jaguars $3400,49000,122.5,156
+29,GPP,Jayden Daniels $6500,Jahmyr Gibbs $8000,MarShawn Lloyd $4800,Jordan Addison $5800,Terry McLaurin $5700,DJ Moore $5600,Dallas Goedert $4100,Marvin Harrison Jr. $5000,Lions $3200,48700,118.0,148
+30,GPP,Daniel Jones $5400,Travis Etienne Jr. $5900,Bucky Irving $5700,Justin Jefferson $7300,DeVonta Smith $6600,Alec Pierce $5700,Tucker Kraft $4500 (Q),Kenny Gainwell $5200,Steelers $3300,49600,114.0,75
