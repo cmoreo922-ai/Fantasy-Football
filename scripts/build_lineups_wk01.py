@@ -25,9 +25,9 @@ POOL = {
  "QB": {"Jared Goff": (19.5, 12), "Joe Burrow": (21, 18), "Jalen Hurts": (20.5, 12),
         "Josh Allen": (22, 15), "Caleb Williams": (19, 8), "Justin Herbert": (18.5, 10),
         "Baker Mayfield": (18, 7), "Jayden Daniels": (20, 10), "Trevor Lawrence": (17.5, 6),
-        "Daniel Jones": (16.5, 4)},
+        "Daniel Jones": (16.5, 4), "Jordan Love": (17, 6)},
  "RB": {"Jahmyr Gibbs": (22, 30), "Bijan Robinson": (19, 15), "Jonathan Taylor": (18.5, 12),
-        "James Cook III": (17, 10), "Chase Brown": (17, 12), "De'Von Achane": (17, 10),
+        "James Cook III": (17, 10), "Chase Brown": (17, 12), "De'Von Achane": (18, 10),
         "Saquon Barkley": (16, 12), "Omarion Hampton": (17.5, 25), "Derrick Henry": (17, 14),
         "MarShawn Lloyd": (13, 45), "Bucky Irving": (14.5, 15), "Travis Etienne Jr.": (13, 8),
         "David Montgomery": (12, 6), "Quinshon Judkins": (11, 5), "Jaylen Warren": (11, 8),
@@ -59,30 +59,40 @@ for pos, d in POOL.items():
                        id=r["ID"], nid=r["Name + ID"], q=r["Status"] == "Q")
 
 CAPS = defaultdict(lambda: 9)  # max appearances in 30
-CAPS.update({"MarShawn Lloyd": 18, "Jahmyr Gibbs": 14, "DJ Moore": 12, "Omarion Hampton": 11,
-             "Ja'Marr Chase": 11, "Amon-Ra St. Brown": 11, "Ladd McConkey": 9,
-             "Bucky Irving": 10, "Dallas Goedert": 9, "Sam LaPorta": 8, "Tyler Allgeier": 6,
+CAPS.update({"MarShawn Lloyd": 18, "Jahmyr Gibbs": 14, "DJ Moore": 7, "Omarion Hampton": 11,
+             "Ja'Marr Chase": 11, "Amon-Ra St. Brown": 11, "Ladd McConkey": 10,
+             "Bucky Irving": 10, "Dallas Goedert": 9, "Sam LaPorta": 8, "Tyler Allgeier": 3,
              "Tee Higgins": 7, "Emeka Egbuka": 4, "Keon Coleman": 3, "Tucker Kraft": 5,
-             "Luther Burden III": 3, "Rome Odunze": 3, "Bears": 10, "Chargers": 9,
-             "Jaguars": 8, "Jared Goff": 8, "Joe Burrow": 7, "Jalen Hurts": 6, "Josh Allen": 6,
+             "Luther Burden III": 4, "Rome Odunze": 4, "Bears": 10, "Chargers": 9,
+             "Jaguars": 8, "Jared Goff": 8, "Joe Burrow": 7, "Jalen Hurts": 7, "Josh Allen": 5,
              "Kenny Gainwell": 3, "Jordan Mason": 3, "Tre' Harris": 2, "Braelon Allen": 2,
-             "Kaleb Johnson": 2, "Mark Andrews": 3, "Juwan Johnson": 4, "Alec Pierce": 3,
-             "Stefon Diggs": 9, "Michael Wilson": 3, "Marvin Harrison Jr.": 4})
+             "Kaleb Johnson": 2, "Jaylen Warren": 4, "Mark Andrews": 3, "Juwan Johnson": 5, "Alec Pierce": 3,
+             "Stefon Diggs": 5, "Michael Wilson": 3, "Marvin Harrison Jr.": 4,
+             "DeVonta Smith": 8, "De'Von Achane": 8, "Lions": 6, "Jordan Love": 2,
+             "Christian Watson": 4, "Colston Loveland": 4,
+             "Terry McLaurin": 3, "David Montgomery": 4, "Saquon Barkley": 4})
 
 # weight multiplier for portfolio core — pushes the generator toward our best plays
 BOOST = defaultdict(lambda: 1.0)
-BOOST.update({"MarShawn Lloyd": 4, "Jahmyr Gibbs": 3, "Ja'Marr Chase": 3.5,
-              "Amon-Ra St. Brown": 2.5, "DJ Moore": 1.5, "Omarion Hampton": 2,
+BOOST.update({"MarShawn Lloyd": 4, "Jahmyr Gibbs": 4.5, "Ja'Marr Chase": 4, "Joe Burrow": 3.5,
+              "Amon-Ra St. Brown": 2.5, "Omarion Hampton": 2,
               "Bucky Irving": 1.5, "Tee Higgins": 2, "Jameson Williams": 1.8,
               "Chris Olave": 1.8, "Trey McBride": 2.5, "Brock Bowers": 2,
-              "Derrick Henry": 1.5, "Nico Collins": 1.5, "Chargers": 1.5, "Jaguars": 1.5})
+              "Derrick Henry": 1.5, "Nico Collins": 1.5, "Chargers": 1.5, "Jaguars": 1.5,
+              # PFF 2025 matchup adjustments (see weeks/2026-wk01.md matchup board)
+              "DeVonta Smith": 2.2, "De'Von Achane": 3.0, "Ladd McConkey": 1.5,
+              "Chase Brown": 1.4, "Lions": 3.5, "Christian Watson": 1.5,
+              "Rome Odunze": 1.3, "Colston Loveland": 1.3})
 
+# Cash rework after full PFF sweep: DJ Moore 5->2 (HOU elite secondary),
+# Diggs 4->2 (PHI coverage strong), DeVonta Smith in 3 (WAS coverage worst on
+# slate), McConkey in 3 (ARI slot CB smash).
 CASH = [
  ["Jared Goff","Jahmyr Gibbs","MarShawn Lloyd","Amon-Ra St. Brown","DJ Moore","Stefon Diggs","Dallas Goedert","Bucky Irving","Bears"],
- ["Jalen Hurts","Jahmyr Gibbs","MarShawn Lloyd","Amon-Ra St. Brown","DJ Moore","Stefon Diggs","Juwan Johnson","Bucky Irving","Bears"],
+ ["Jalen Hurts","Omarion Hampton","MarShawn Lloyd","Amon-Ra St. Brown","DeVonta Smith","Chris Godwin Jr.","Juwan Johnson","Bucky Irving","Bears"],
  ["Josh Allen","Jahmyr Gibbs","MarShawn Lloyd","DJ Moore","Ladd McConkey","Stefon Diggs","Juwan Johnson","Omarion Hampton","Bears"],
- ["Jared Goff","Omarion Hampton","MarShawn Lloyd","Amon-Ra St. Brown","Ladd McConkey","DJ Moore","Dallas Goedert","Bucky Irving","Bears"],
- ["Jalen Hurts","Jahmyr Gibbs","MarShawn Lloyd","Nico Collins","DJ Moore","Chris Godwin Jr.","Dallas Goedert","Bucky Irving","Bears"],
+ ["Jared Goff","Omarion Hampton","MarShawn Lloyd","Amon-Ra St. Brown","Ladd McConkey","DeVonta Smith","Juwan Johnson","Bucky Irving","Bears"],
+ ["Jalen Hurts","Jahmyr Gibbs","MarShawn Lloyd","Ladd McConkey","Chris Godwin Jr.","DeVonta Smith","Dallas Goedert","Bucky Irving","Bears"],
 ]
 
 use = defaultdict(int)
