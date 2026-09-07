@@ -13,7 +13,14 @@ players to pick each week.
   exposure ≤5–10% of bankroll, and flag it if losses are being chased.
 - Weekly deliverable: **both** a ranked player pool per position AND sample
   cash + GPP lineups (use real DK salaries when Chris pastes them in;
-  otherwise organize picks by salary tier).
+  otherwise organize picks by salary tier), plus the visual picks-board
+  artifact and DK bulk-upload CSV.
+- **Chris is on Hawaii time (HST).** Main-slate lock is ~7:00 AM HST Sunday;
+  inactives drop ~5:30 AM HST — build pre-lock checklists around that.
+- Preferred GPP: the big $5 Millionaire contest (150-max, ~20% paid, very
+  top-heavy) — build GPP entries for ceiling/leverage, never to min-cash.
+- Chris is setting up PFF and Fantasy Points Data subscriptions; when he
+  provides exports, store baselines in `data/` per docs/season-tracking.md.
 
 ## How to behave in this repo
 
