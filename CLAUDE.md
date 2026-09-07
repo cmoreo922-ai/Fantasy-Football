@@ -19,8 +19,13 @@ players to pick each week.
   inactives drop ~5:30 AM HST — build pre-lock checklists around that.
 - Preferred GPP: the big $5 Millionaire contest (150-max, ~20% paid, very
   top-heavy) — build GPP entries for ceiling/leverage, never to min-cash.
-- Chris is setting up PFF and Fantasy Points Data subscriptions; when he
+- Chris has a **PFF+ annual** subscription (decided against Fantasy Points
+  Data for now — usage stats come free from PFR/Next Gen Stats). When he
   provides exports, store baselines in `data/` per docs/season-tracking.md.
+- Chris's brother plays **DraftKings Pick6** (higher/lower stat-line parlays)
+  and shares slips for review. Grade legs against our usage/matchup research;
+  push toward 2-4 high-conviction legs; watch for trap lines (e.g. rushing-
+  yard overs on reception-driven backs). Keep Pick6 a small side play.
 
 ## How to behave in this repo
 
