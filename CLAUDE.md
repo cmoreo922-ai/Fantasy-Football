@@ -40,5 +40,11 @@ players to pick each week.
 - Update docs/coaching-trends-2026.md when coordinators/play-callers change.
 - Never fabricate stats, salaries, ownership, or injury statuses; label
   estimates as estimates.
+- **Never state a player's team, backfield, or depth-chart role from memory.**
+  2026 rosters differ heavily from training knowledge (e.g., David Montgomery
+  was traded DET→HOU; Claude wrongly called a DET committee from stale memory
+  in Week 1). Before ANY roster/role claim: check the current week's DK salary
+  CSV in `data/` (authoritative for team) and/or run a fresh search. This
+  applies to chat commentary and Pick6 leg grades, not just lineups.
 - Real money is involved: respect the bankroll guidance in docs/dfs-strategy.md
   and don't encourage oversized entries or chasing losses.

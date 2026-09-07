@@ -8,6 +8,12 @@ description: Evaluate whether a specific NFL player is worth playing this week a
 Produce a verdict for a specific player (or head-to-head comparison). Always
 use fresh web research for current role/injury/lines — never stale knowledge.
 
+**Roster-verification rule (mandatory first step):** confirm the player's
+current team and backfield/target competition from the week's DK salary CSV
+in `data/` and/or a fresh search BEFORE reasoning about his role. Training
+knowledge of rosters is stale; a wrong committee/team assumption invalidates
+the whole verdict.
+
 ## Gather (web research + docs)
 
 1. **Role right now:** snap share, route participation or opportunity share,

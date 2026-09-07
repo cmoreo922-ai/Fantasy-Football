@@ -42,6 +42,11 @@ When a player changes teams, his fantasy value = new **role** × new
   top target; potential top-10 WR ceiling per multiple outlets.
 
 ### Running backs
+- **David Montgomery → Texans (trade)** — "Sonic and Knuckles" broken up.
+  In Houston he's the early-down complement; in Detroit, **Jahmyr Gibbs is now
+  a no-committee bell cow** (signed a record extension; backup Isiah Pacheco
+  opened 2026 on IR, leaving only Sione Vaki/Jacob Saylors). Gibbs's rushing
+  volume — his old weakness — should jump.
 - **Kenneth Walker III → Chiefs** — reigning Super Bowl MVP into the Chiefs
   backfield; scheme/passing-game usage will decide if he's elite or just good.
 - Committee/backfield shifts to verify weekly: **Rico Dowdle** trending toward
