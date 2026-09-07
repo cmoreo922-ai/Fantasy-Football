@@ -60,6 +60,15 @@ him — and state his risk level in the writeup.
   ownership projections); flag over-owned chalk to fade and 1–2 contrarian
   pivots. Build 1–2 stacks with bring-backs per docs/dfs-strategy.md.
 
+## Step 4.5 — Trends & benchmarks
+
+- Apply docs/season-tracking.md: diff this week's salary CSV vs last week's
+  (price lag = value, price spike = trap check), note 3-week usage trends,
+  age/mileage flags, and situation changes.
+- Frame lineups against docs/winning-benchmarks.md: cash lineups target the
+  ~125-pt cash line via floor; GPP lineups target ~235+ ceiling via
+  correlation — never sell a GPP lineup on its mean projection.
+
 ## Step 5 — Deliver
 
 Write the analysis to `weeks/2026-wkNN.md` using `weeks/TEMPLATE.md`. Include
@@ -67,6 +76,16 @@ sample cash and GPP lineups that fit the $50,000 cap **using real current DK
 salaries if the user provides them** — if salaries aren't available, present
 picks by tier (spend-up / mid / value) instead of fake salary numbers. Commit
 the file. Summarize the picks and key reasoning in chat.
+
+Chris's preferred presentation is a **visual weekly report published as an
+HTML artifact** (styled like a DFS picks show), organized as:
+- 🔒 **Must-haves** — core plays of the week with one-line reasons
+- 💎 **Value pick of the week** — the underpriced role, front and center
+- 🚀 **Risky / high-ceiling** — low floor, tournament-winning upside, with risk labeled
+- ⛔ **Stay away** — the fades and why (injury risk, bad environment, trap pricing)
+- The sample lineups, exposure summary, and score benchmarks (cash line vs GPP target)
+Load the artifact-design skill before writing it. Also deliver the DK bulk-upload
+CSV when a lineup portfolio is generated (scripts/ has the generator to adapt).
 
 ## Step 6 — Follow up
 

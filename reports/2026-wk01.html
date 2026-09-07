@@ -1,0 +1,309 @@
+<title>Week 1 War Room</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#0c1210; --surface:#151d19; --surface2:#1b2620; --line:#2a3830;
+    --ink:#e9f1eb; --muted:#93a89b; --accent:#57d63b; --accent-ink:#0b1509;
+    --gold:#f2b32d; --risk:#e88b3a; --danger:#e5564d; --chip:#233029;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#f2f5f1; --surface:#ffffff; --surface2:#e9efe9; --line:#d3ddd3;
+      --ink:#15221a; --muted:#5c6f62; --accent:#1e8f26; --accent-ink:#ffffff;
+      --gold:#a86f00; --risk:#b35a10; --danger:#bf322a; --chip:#e4ebe3;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f2f5f1; --surface:#ffffff; --surface2:#e9efe9; --line:#d3ddd3;
+    --ink:#15221a; --muted:#5c6f62; --accent:#1e8f26; --accent-ink:#ffffff;
+    --gold:#a86f00; --risk:#b35a10; --danger:#bf322a; --chip:#e4ebe3;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font:16px/1.55 Barlow,system-ui,sans-serif; margin:0; padding:0 16px 64px}
+  .wrap{max-width:1040px; margin:0 auto}
+  h1,h2,h3{font-family:"Barlow Condensed",Barlow,sans-serif; text-wrap:balance; margin:0}
+  header{padding:40px 0 22px; border-bottom:2px solid var(--accent); display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; justify-content:space-between}
+  .kick{color:var(--accent); font-family:"Barlow Condensed"; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:14px}
+  h1{font-size:56px; font-weight:800; line-height:.95; text-transform:uppercase}
+  .sub{color:var(--muted); margin-top:6px; max-width:56ch}
+  .targets{display:flex; gap:10px}
+  .target{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 16px; text-align:center; min-width:118px}
+  .target .n{font:600 26px/1 "IBM Plex Mono",monospace; color:var(--accent)}
+  .target.gpp .n{color:var(--gold)}
+  .target .l{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em}
+  section{margin-top:44px}
+  .sechead{display:flex; align-items:baseline; gap:12px; margin-bottom:14px}
+  h2{font-size:30px; font-weight:800; text-transform:uppercase; letter-spacing:.02em}
+  .secnote{color:var(--muted); font-size:14px}
+  /* slate map */
+  .games{display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:8px}
+  .game{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px}
+  .game .m{font-family:"Barlow Condensed"; font-weight:700; font-size:18px}
+  .game .t{font:500 12.5px/1.5 "IBM Plex Mono",monospace; color:var(--muted)}
+  .game.hot{border-color:var(--accent); box-shadow:inset 3px 0 0 var(--accent)}
+  .game.cold{opacity:.62}
+  .game .tag{font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--accent); font-weight:700}
+  .game.cold .tag{color:var(--danger)}
+  /* pick cards */
+  .picks{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px}
+  .pick{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; gap:8px}
+  .prow{display:flex; align-items:center; gap:10px}
+  .pos{font:700 12px/1 "Barlow Condensed"; letter-spacing:.06em; background:var(--chip); border-radius:4px; padding:5px 7px; color:var(--muted); min-width:34px; text-align:center}
+  .pname{font-family:"Barlow Condensed"; font-weight:700; font-size:21px; flex:1}
+  .sal{font:600 14px/1 "IBM Plex Mono",monospace; background:var(--chip); padding:5px 8px; border-radius:4px}
+  .meta{font-size:12.5px; color:var(--muted); display:flex; gap:10px; flex-wrap:wrap}
+  .why{font-size:14px}
+  .fit{font-size:12px; color:var(--accent); font-weight:600}
+  .lock .sal{background:var(--accent); color:var(--accent-ink)}
+  .risky{border-left:3px solid var(--risk)}
+  .risky .fit{color:var(--risk)}
+  .avoid{border-left:3px solid var(--danger)}
+  .avoid .fit{color:var(--danger)}
+  .qtag{font:600 11px/1 "IBM Plex Mono",monospace; color:var(--risk)}
+  /* value feature */
+  .feature{background:linear-gradient(135deg,var(--surface),var(--surface2)); border:1px solid var(--gold); border-radius:10px; padding:22px 24px; display:flex; flex-wrap:wrap; gap:20px; align-items:center}
+  .feature .big{font-family:"Barlow Condensed"; font-weight:800; font-size:44px; line-height:1}
+  .feature .fsal{font:600 30px/1 "IBM Plex Mono",monospace; color:var(--gold)}
+  .feature p{margin:8px 0 0; max-width:64ch}
+  /* explainer */
+  .duo{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px}
+  .panel{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:18px 20px}
+  .panel h3{font-size:22px; text-transform:uppercase; margin-bottom:6px}
+  .panel.cashp h3{color:var(--accent)} .panel.gppp h3{color:var(--gold)}
+  .panel ul{margin:8px 0 0; padding-left:18px; font-size:14.5px}
+  .panel li{margin:4px 0}
+  .bench{font-size:13px; color:var(--muted); margin-top:10px}
+  /* lineups */
+  .lus{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px}
+  .lu{background:var(--surface); border:1px solid var(--line); border-radius:8px; overflow:hidden}
+  .lu h3{padding:11px 14px; font-size:19px; text-transform:uppercase; background:var(--surface2); display:flex; justify-content:space-between; align-items:center}
+  .lu h3 .b{font:600 12px/1 "IBM Plex Mono",monospace; color:var(--muted)}
+  .lu table{width:100%; border-collapse:collapse; font-size:13.5px}
+  .lu td{padding:6px 14px; border-top:1px solid var(--line)}
+  .lu td.s{font:500 12.5px "IBM Plex Mono",monospace; text-align:right; color:var(--muted)}
+  .lu td.p{color:var(--muted); width:44px; font-weight:600; font-size:11.5px}
+  .stackrow{color:var(--accent); font-weight:600}
+  /* exposure */
+  .exp{display:flex; flex-direction:column; gap:6px; max-width:560px}
+  .erow{display:grid; grid-template-columns:150px 1fr 34px; gap:10px; align-items:center; font-size:13.5px}
+  .ebar{height:10px; background:var(--surface2); border-radius:5px; overflow:hidden}
+  .ebar i{display:block; height:100%; background:var(--accent)}
+  .erow .n{font:500 12.5px "IBM Plex Mono",monospace; color:var(--muted); text-align:right}
+  .check{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:16px 20px; font-size:14.5px}
+  .check li{margin:5px 0}
+  .foot{margin-top:40px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:14px; max-width:74ch}
+  a{color:var(--accent)}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <div class="kick">DraftKings Classic · Main Slate · Sun Sept 13, 2026</div>
+    <h1>Week 1 War Room</h1>
+    <div class="sub">12 games, $50K cap. Lines &amp; statuses as of Mon 9/7 — re-verify Friday designations and Sunday inactives (~11:30a ET) before lock.</div>
+  </div>
+  <div class="targets">
+    <div class="target"><div class="n">125</div><div class="l">Cash line</div></div>
+    <div class="target gpp"><div class="n">194+</div><div class="l">Wk1 GPP win (hist. low)</div></div>
+    <div class="target gpp"><div class="n">236</div><div class="l">Milly avg to win</div></div>
+  </div>
+</header>
+
+<section>
+  <div class="sechead"><h2>Slate Map</h2><div class="secnote">implied points per team — build where the scoring lives</div></div>
+  <div class="games">
+    <div class="game hot"><div class="m">NO @ DET</div><div class="t">DET −7 · O/U 50</div><div class="t">DET 28.5 / NO 21.5</div><div class="tag">Top environment</div></div>
+    <div class="game hot"><div class="m">ARI @ LAC</div><div class="t">LAC −11.5 · O/U 45.5</div><div class="t">LAC 28.5 / ARI 17</div><div class="tag">Blowout script</div></div>
+    <div class="game hot"><div class="m">TB @ CIN</div><div class="t">CIN −3.5 · O/U 50.5</div><div class="t">CIN 27 / TB 23.5</div><div class="tag">Shootout · chalk game</div></div>
+    <div class="game hot"><div class="m">WAS @ PHI</div><div class="t">PHI −5.5 · O/U 46.5</div><div class="t">PHI 26 / WAS 20.5</div><div class="tag">Strong</div></div>
+    <div class="game"><div class="m">CHI @ CAR</div><div class="t">CHI −2.5 · O/U 47.5</div><div class="t">CHI 25 / CAR 22.5</div><div class="tag">Sneaky good</div></div>
+    <div class="game"><div class="m">BAL @ IND</div><div class="t">BAL −3.5 · total TBD</div><div class="t">BAL ~24 / IND ~20.5</div></div>
+    <div class="game"><div class="m">CLE @ JAX</div><div class="t">JAX −7.5 · O/U 40.5</div><div class="t">JAX 24 / CLE 16.5</div></div>
+    <div class="game"><div class="m">BUF @ HOU</div><div class="t">BUF −1.5 · O/U 44.5</div><div class="t">BUF 23 / HOU 21.5</div></div>
+    <div class="game"><div class="m">GB @ MIN</div><div class="t">GB −1.5 · O/U 44.5</div><div class="t">GB 23 / MIN 21.5</div></div>
+    <div class="game"><div class="m">ATL @ PIT</div><div class="t">PIT −3.5 · O/U 42.5</div><div class="t">PIT 23 / ATL 19.5</div></div>
+    <div class="game cold"><div class="m">MIA @ LV</div><div class="t">LV −3.5 · O/U 40.5</div><div class="t">LV 22 / MIA 18.5</div><div class="tag">Thin</div></div>
+    <div class="game cold"><div class="m">NYJ @ TEN</div><div class="t">TEN −1.5 · O/U 38.5</div><div class="t">TEN 20 / NYJ 18.5</div><div class="tag">Stay away</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>💎 Value Pick of the Week</h2></div>
+  <div class="feature">
+    <div>
+      <div class="big">MarShawn Lloyd · RB · GB</div>
+      <div class="meta"><span>GB @ MIN · GB implied 23</span><span class="fsal">$4,800</span></div>
+      <p>Josh Jacobs opens the year on the commissioner's exempt list and Green Bay named Lloyd the lead back. A projected 15+ touch starter priced like a backup is the single biggest pricing mistake on the slate — he's in 18 of our 30 lineups and he's what pays for Gibbs. Know the risks: he's split work with Kaleb Johnson before, and his injury history is real. He'll be the highest-owned value on the slate; in cash that's irrelevant, in GPPs we pair him with lower-owned ceiling elsewhere.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>🔒 Must-Haves</h2><div class="secnote">locked volume in the best environments — build around these</div></div>
+  <div class="picks">
+    <div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">Jahmyr Gibbs</span><span class="sal">$8,000</span></div>
+      <div class="meta"><span>NO@DET · DET 28.5 implied</span></div>
+      <div class="why">Bell-cow touches + receiving work in the slate's best offense. Every scoring stream DK pays for.</div></div>
+    <div class="pick lock"><div class="prow"><span class="pos">WR</span><span class="pname">Amon-Ra St. Brown</span><span class="sal">$7,500</span></div>
+      <div class="meta"><span>NO@DET · DET 28.5 implied</span></div>
+      <div class="why">Massive target share, dome, full-PPR floor. The safest 20+ point path at WR.</div></div>
+    <div class="pick lock"><div class="prow"><span class="pos">WR</span><span class="pname">DJ Moore</span><span class="sal">$5,600</span></div>
+      <div class="meta"><span>BUF@HOU · BUF 23 implied</span></div>
+      <div class="why">Priced off last year's Chicago role, not this year's job.</div>
+      <div class="fit">System fit: traded to Buffalo as Josh Allen's alpha — targets should spike before price does.</div></div>
+    <div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">Omarion Hampton</span><span class="sal">$6,800</span></div>
+      <div class="meta"><span>ARI@LAC · LAC −11.5</span></div>
+      <div class="why">Biggest favorite on the board = second-half clock-killing carries. Chalk, and fine in cash.</div></div>
+    <div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">Bucky Irving</span><span class="sal">$5,700</span></div>
+      <div class="meta"><span>TB@CIN · 50.5 total</span></div>
+      <div class="why">Lead back in the shootout game; also the natural bring-back under Bengals stacks.</div></div>
+    <div class="pick lock"><div class="prow"><span class="pos">DST</span><span class="pname">Bears D/ST</span><span class="sal">$2,800</span></div>
+      <div class="meta"><span>CHI@CAR · CHI −2.5</span></div>
+      <div class="why">Cheapest way to buy sacks/turnovers vs a shaky offense — frees salary for the studs above.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>🚀 Risky · High Ceiling</h2><div class="secnote">low floor, tournament-winning upside — GPP only, never cash</div></div>
+  <div class="picks">
+    <div class="pick risky"><div class="prow"><span class="pos">STK</span><span class="pname">Burrow + Chase + Higgins</span><span class="sal">$21,000</span></div>
+      <div class="meta"><span>TB@CIN · CIN 27 implied</span><span class="qtag">Chase &amp; Higgins Q</span></div>
+      <div class="why">The full Bengals onslaught with Bucky as bring-back. If this game hits 55+, this is the skeleton of the winning lineup. Both Q tags look minor — verify Friday.</div></div>
+    <div class="pick risky"><div class="prow"><span class="pos">WR</span><span class="pname">Jameson Williams</span><span class="sal">$6,000</span></div>
+      <div class="meta"><span>NO@DET · DET 28.5</span></div>
+      <div class="why">The leverage version of the Lions offense — a fraction of ARSB's ownership, same 28.5-point environment, deep-shot ceiling.</div></div>
+    <div class="pick risky"><div class="prow"><span class="pos">QB</span><span class="pname">Caleb Williams</span><span class="sal">$6,300</span></div>
+      <div class="meta"><span>CHI@CAR · CHI 25 implied</span></div>
+      <div class="why">Low-owned stack anchor with Odunze/Burden/Loveland.</div>
+      <div class="fit">System fit: year 2 under Ben Johnson calling plays — his Lions offenses were top-5 three straight years.</div></div>
+    <div class="pick risky"><div class="prow"><span class="pos">TE</span><span class="pname">McBride / Bowers pay-up</span><span class="sal">$6,800–6,900</span></div>
+      <div class="meta"><span>TE chalk lives under $5K this week</span></div>
+      <div class="why">The cheap-TE bin is projected as an ownership trap. Paying up at the thinnest position is real leverage.</div></div>
+    <div class="pick risky"><div class="prow"><span class="pos">RB</span><span class="pname">Tyler Allgeier</span><span class="sal">$4,900</span></div>
+      <div class="meta"><span>ARI@LAC</span><span class="qtag">Conditional</span></div>
+      <div class="why">ONLY if rookie Jeremiyah Love (high-ankle, ~50/50) is inactive — then Allgeier inherits the whole backfield. Bad environment, pure volume play.</div></div>
+    <div class="pick risky"><div class="prow"><span class="pos">WR</span><span class="pname">Marvin Harrison Jr.</span><span class="sal">$5,000</span></div>
+      <div class="meta"><span>ARI@LAC · ARI 17 implied</span></div>
+      <div class="why">Trailing all game = garbage-time target volume. Ugly game, fine ceiling, nobody wants him.</div>
+      <div class="fit">System fit: new McVay-tree offense (Mike LaFleur) historically concentrates targets on the WR1.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>⛔ Stay Away</h2><div class="secnote">the money you don't lose counts the same as the money you win</div></div>
+  <div class="picks">
+    <div class="pick avoid"><div class="prow"><span class="pos">RB</span><span class="pname">Ashton Jeanty</span><span class="sal">$6,600</span></div>
+      <div class="meta"><span>MIA@LV</span><span class="qtag">Q — ankle</span></div>
+      <div class="why">Low-ankle sprain, hadn't practiced, coach already says workload will be scaled. Full price for a partial role.</div></div>
+    <div class="pick avoid"><div class="prow"><span class="pos">RB</span><span class="pname">Chuba Hubbard</span><span class="sal">$5,500</span></div>
+      <div class="meta"><span>CHI@CAR</span><span class="qtag">Q — hamstring</span></div>
+      <div class="why">Hamstring, first game back, "won't be 100%." NFL data says re-injury risk is ~5x in-season — an automatic fade in our system.</div></div>
+    <div class="pick avoid"><div class="prow"><span class="pos">RB</span><span class="pname">Bijan Robinson</span><span class="sal">$7,700</span></div>
+      <div class="meta"><span>ATL@PIT · ATL 19.5 implied</span></div>
+      <div class="why">Elite player, wrong week: near-top price + bad environment + healthy ownership. Talent never overrides environment at this cost.</div></div>
+    <div class="pick avoid"><div class="prow"><span class="pos">—</span><span class="pname">NYJ @ TEN · anything</span><span class="sal">38.5 total</span></div>
+      <div class="meta"><span>Lowest total on the slate</span></div>
+      <div class="why">Two bad offenses, no pace. Even Breece Hall (groin Q) needs a perfect script here.</div></div>
+    <div class="pick avoid"><div class="prow"><span class="pos">WR</span><span class="pname">Emeka Egbuka</span><span class="sal">$6,200</span></div>
+      <div class="meta"><span>TB@CIN</span><span class="qtag">Q — toe</span></div>
+      <div class="why">Love the season-long breakout (No. 1 role with Evans gone) — but a toe injury on a "hopeful" tag at full price is a Week 2 buy, not a Week 1 bet. Capped at 4/30 lineups.</div></div>
+    <div class="pick avoid"><div class="prow"><span class="pos">TE</span><span class="pname">The cheap-TE chalk bin</span><span class="sal">&lt;$5,000</span></div>
+      <div class="meta"><span>Field behavior, not a player</span></div>
+      <div class="why">Everyone shops sub-$5K TE this week. If we punt TE, it's Goedert/Juwan with a role — not the trendy dart everyone shares.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Cash vs GPP — Why We Build Two Different Animals</h2></div>
+  <div class="duo">
+    <div class="panel cashp">
+      <h3>Cash · beat half the field</h3>
+      <ul>
+        <li><b>~125 points wins.</b> You need the 55th percentile, not a miracle.</li>
+        <li>Built on <b>floor</b>: locked touches, big target shares, no injury tags.</li>
+        <li>Being different is a <em>disadvantage</em> — if the obvious play is great, everyone should have him, including us.</li>
+        <li>Pays a small, steady return. This is the engine that grows the bankroll.</li>
+      </ul>
+      <div class="bench">Our 5 cash lineups project ~125–130 by design — that IS the target.</div>
+    </div>
+    <div class="panel gppp">
+      <h3>GPP · beat 99.99% of the field</h3>
+      <ul>
+        <li><b>~236 avg wins the Milly</b> (Week 1 historical low: ~194). No one projects there — winners <em>correlate</em> there.</li>
+        <li>A projection is an average. A 130-projected lineup hits 240 in the slice of outcomes where a stack's game explodes — QB, two receivers, and the bring-back spike <b>together</b>.</li>
+        <li>Built on <b>ceiling + leverage</b>: stacks, and 2–4 players under 10% owned so a win isn't split with the crowd.</li>
+        <li>Expect most GPP entries to lose. That's the price of the ticket, which is why entry sizing is fixed and small.</li>
+      </ul>
+      <div class="bench">All 25 GPP lineups carry a QB stack; most carry a bring-back.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Flagship Lineups</h2><div class="secnote">3 of 30 — full portfolio in the DK upload file</div></div>
+  <div class="lus">
+    <div class="lu"><h3>Cash core <span class="b">$49,700</span></h3><table>
+      <tr><td class="p">QB</td><td>Jared Goff</td><td class="s">$6,000</td></tr>
+      <tr><td class="p">RB</td><td>Jahmyr Gibbs</td><td class="s">$8,000</td></tr>
+      <tr><td class="p">RB</td><td>Bucky Irving</td><td class="s">$5,700</td></tr>
+      <tr><td class="p">WR</td><td>Amon-Ra St. Brown</td><td class="s">$7,500</td></tr>
+      <tr><td class="p">WR</td><td>DJ Moore</td><td class="s">$5,600</td></tr>
+      <tr><td class="p">WR</td><td>Stefon Diggs</td><td class="s">$5,200</td></tr>
+      <tr><td class="p">TE</td><td>Dallas Goedert</td><td class="s">$4,100</td></tr>
+      <tr><td class="p">FLX</td><td>MarShawn Lloyd</td><td class="s">$4,800</td></tr>
+      <tr><td class="p">DST</td><td>Bears</td><td class="s">$2,800</td></tr>
+    </table></div>
+    <div class="lu"><h3>GPP · Bengals onslaught <span class="b">$49,800</span></h3><table>
+      <tr class="stackrow"><td class="p">QB</td><td>Joe Burrow ⛓</td><td class="s">$6,900</td></tr>
+      <tr><td class="p">RB</td><td>MarShawn Lloyd</td><td class="s">$4,800</td></tr>
+      <tr><td class="p">RB</td><td>Bucky Irving ↩</td><td class="s">$5,700</td></tr>
+      <tr class="stackrow"><td class="p">WR</td><td>Ja'Marr Chase ⛓</td><td class="s">$7,800</td></tr>
+      <tr class="stackrow"><td class="p">WR</td><td>Tee Higgins ⛓</td><td class="s">$6,300</td></tr>
+      <tr><td class="p">WR</td><td>Keon Coleman</td><td class="s">$4,000</td></tr>
+      <tr><td class="p">TE</td><td>Sam LaPorta</td><td class="s">$4,400</td></tr>
+      <tr class="stackrow"><td class="p">FLX</td><td>Chase Brown ⛓</td><td class="s">$7,100</td></tr>
+      <tr><td class="p">DST</td><td>Bears</td><td class="s">$2,800</td></tr>
+    </table></div>
+    <div class="lu"><h3>GPP · Lions × LAC blowout <span class="b">$48,700</span></h3><table>
+      <tr class="stackrow"><td class="p">QB</td><td>Jared Goff ⛓</td><td class="s">$6,000</td></tr>
+      <tr><td class="p">RB</td><td>Omarion Hampton ✚</td><td class="s">$6,800</td></tr>
+      <tr><td class="p">RB</td><td>MarShawn Lloyd</td><td class="s">$4,800</td></tr>
+      <tr class="stackrow"><td class="p">WR</td><td>Jameson Williams ⛓</td><td class="s">$6,000</td></tr>
+      <tr><td class="p">WR</td><td>DJ Moore</td><td class="s">$5,600</td></tr>
+      <tr><td class="p">WR</td><td>Chris Olave ↩</td><td class="s">$6,700</td></tr>
+      <tr class="stackrow"><td class="p">TE</td><td>Sam LaPorta ⛓</td><td class="s">$4,400</td></tr>
+      <tr><td class="p">FLX</td><td>Tyler Allgeier</td><td class="s">$4,900</td></tr>
+      <tr><td class="p">DST</td><td>Chargers ✚</td><td class="s">$3,500</td></tr>
+    </table></div>
+  </div>
+  <div class="secnote" style="margin-top:8px">⛓ stack &nbsp;·&nbsp; ↩ bring-back &nbsp;·&nbsp; ✚ correlated blowout pair (RB + DST of an 11.5-pt favorite)</div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Portfolio Exposure</h2><div class="secnote">appearances across all 30 lineups — no single inactive can sink us</div></div>
+  <div class="exp">
+    <div class="erow"><span>MarShawn Lloyd</span><span class="ebar"><i style="width:60%"></i></span><span class="n">18</span></div>
+    <div class="erow"><span>DJ Moore</span><span class="ebar"><i style="width:37%"></i></span><span class="n">11</span></div>
+    <div class="erow"><span>Jahmyr Gibbs</span><span class="ebar"><i style="width:33%"></i></span><span class="n">10</span></div>
+    <div class="erow"><span>Bears DST</span><span class="ebar"><i style="width:33%"></i></span><span class="n">10</span></div>
+    <div class="erow"><span>Stefon Diggs</span><span class="ebar"><i style="width:30%"></i></span><span class="n">9</span></div>
+    <div class="erow"><span>Bucky Irving</span><span class="ebar"><i style="width:30%"></i></span><span class="n">9</span></div>
+    <div class="erow"><span>Amon-Ra St. Brown</span><span class="ebar"><i style="width:27%"></i></span><span class="n">8</span></div>
+    <div class="erow"><span>Ladd McConkey</span><span class="ebar"><i style="width:27%"></i></span><span class="n">8</span></div>
+    <div class="erow"><span>Ja'Marr Chase (Q)</span><span class="ebar"><i style="width:13%"></i></span><span class="n">4</span></div>
+    <div class="erow"><span>Tee Higgins (Q)</span><span class="ebar"><i style="width:13%"></i></span><span class="n">4</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Before Lock</h2></div>
+  <div class="check"><ul>
+    <li><b>Friday:</b> final designations — Chase, Higgins, Egbuka, LaPorta, Kraft, Swift, Love, Hall. Swap any OUT from the marked lineups.</li>
+    <li><b>Saturday:</b> re-check totals for line moves (BAL@IND total was unposted); check weather (early Sept = usually clean).</li>
+    <li><b>Sunday ~11:30a ET:</b> inactives. Confirm Lloyd's lead role, the Love/Allgeier call, and the WAS backfield.</li>
+    <li><b>Entry sizing:</b> total buy-ins ≤ 5–10% of bankroll — cash in double-ups, GPPs in single-entry/3-max/20-max at small buy-ins. Log everything in the bankroll file.</li>
+  </ul></div>
+</section>
+
+<div class="foot">Projections and ownership are our estimates from role + environment (not scraped feeds). Salaries and player IDs are from the official Week 1 DK export. Benchmarks: ~125 cashes a typical double-up; Milly Maker winners average ~236 (194–277 range). Built from the research playbook in the Fantasy-Football repo — scoring, strategy, metrics, injury-risk, and coaching docs.</div>
+</div>
