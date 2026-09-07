@@ -1,4 +1,4 @@
-player,team,season,side,jersey,pos,games,snaps,snap_a,snap_b,snap_c,snap_d,grade_off_def,grade_pass_recv,grade_runblock_rundef,grade_rush_passrush,grade_passblock_cov,penalties
+player,team,season,side,jersey,pos,games,snaps_total,snaps_pass,snaps_passblock,snaps_run,snaps_runblock,grade_off,grade_pass,grade_passblock,grade_run,grade_runblock,penalties
 Trey McBride,ARZ,2025,offense,85,TE,17,"1,033",737,12,0,284,81.7,84.8,34.4,-,54.1,5 (0)
 Paris Johnson Jr.,ARZ,2025,offense,70,T,12,807,0,565,0,242,76.6,-,77.1,-,72.9,7 (1)
 Michael Wilson,ARZ,2025,offense,14,WR,17,923,674,1,0,248,76.4,76.4,46.8,-,51.2,1 (0)

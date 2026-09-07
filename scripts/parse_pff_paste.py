@@ -5,13 +5,11 @@ Expected paste shape (mobile/web copy): a ranked list of player names first
 (with rank numbers on their own lines), then one stat block per player in the
 same order, each starting with '# <jersey>'.
 
-Column mapping (verified against ARZ 2025 offense paste; confirm per table):
-  # jersey, POS, G, total snaps, snapA, snapB, snapC, snapD,
-  OFF grade, PASS/RECV grade, RUN-BLOCK grade, RUSH grade, PASS-BLOCK grade,
-  penalties as 'N (M)'
-Snap splits (offense): A=pass routes/dropbacks, B=pass-block (OL) or run-block-ish,
-  C=rush attempts, D=run-block snaps. Positions use the facets that apply; '-'
-  means not applicable.
+Column key (VERIFIED by Chris against PFF's own legend, offense table):
+  #, POS, #G, TOT, PASS (pass-play snaps), PBLK (pass-block snaps),
+  RUN (run-play snaps), RBLK (run-block snaps),
+  OFF, PASS, PBLK, RUN, RBLK grades, PEN as 'Total (Declined+Offset)'.
+'-' = facet not applicable to that player.
 
 Usage: parse_pff_paste.py <raw.txt> <out.csv> <team> <season> <side>
 """
@@ -39,10 +37,10 @@ while i < len(lines):
         i += 1
 
 assert len(names) >= len(stats), f"{len(names)} names vs {len(stats)} stat rows"
-cols = ["player","team","season","side","jersey","pos","games","snaps",
-        "snap_a","snap_b","snap_c","snap_d",
-        "grade_off_def","grade_pass_recv","grade_runblock_rundef","grade_rush_passrush",
-        "grade_passblock_cov","penalties"]
+cols = ["player","team","season","side","jersey","pos","games","snaps_total",
+        "snaps_pass","snaps_passblock","snaps_run","snaps_runblock",
+        "grade_off","grade_pass","grade_passblock","grade_run","grade_runblock",
+        "penalties"]
 with open(out, "w", newline="") as f:
     w = csv.writer(f); w.writerow(cols)
     for name, b in zip(names, stats):
