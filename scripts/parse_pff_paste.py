@@ -37,13 +37,25 @@ while i < len(lines):
         i += 1
 
 assert len(names) >= len(stats), f"{len(names)} names vs {len(stats)} stat rows"
-cols = ["player","team","season","side","jersey","pos","games","snaps_total",
-        "snaps_pass","snaps_passblock","snaps_run","snaps_runblock",
-        "grade_off","grade_pass","grade_passblock","grade_run","grade_runblock",
-        "penalties"]
+META = ["player", "team", "season", "side"]
+OFF_COLS = ["jersey","pos","games","snaps_total",
+            "snaps_pass","snaps_passblock","snaps_run","snaps_runblock",
+            "grade_off","grade_pass","grade_passblock","grade_run","grade_runblock",
+            "penalties"]
+# Defense key verified by Chris against PFF's legend (order as displayed).
+DEF_COLS = ["jersey","pos","games","snaps_total",
+            "snaps_rundef","snaps_passrush","snaps_coverage",
+            "grade_def","grade_rundef","grade_tackling","grade_passrush","grade_coverage",
+            "pressures","sacks","qb_hits","hurries","batted",
+            "tackles","assists","missed_tackles","missed_tackle_pct","stops","forced_fumbles",
+            "targets","receptions","rec_pct","yards","yards_per_rec","yac","longest",
+            "tds_allowed","ints","pass_breakups","passer_rating_against",
+            "penalties","align_dl","align_box","align_fs","align_slot","align_corner",
+            "align_nt","align_dt","align_over_ot","align_outside_ot"]
+cols = DEF_COLS if side.lower().startswith("def") else OFF_COLS
 with open(out, "w", newline="") as f:
-    w = csv.writer(f); w.writerow(cols)
+    w = csv.writer(f); w.writerow(META + cols)
     for name, b in zip(names, stats):
-        b = (b + [""] * 14)[:14]
+        b = (b + [""] * len(cols))[:len(cols)]
         w.writerow([name, team, season, side] + b)
-print(f"parsed {len(stats)} players -> {out}")
+print(f"parsed {len(stats)} players x {len(cols)} fields -> {out}")
