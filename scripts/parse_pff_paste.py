@@ -53,9 +53,24 @@ DEF_COLS = ["jersey","pos","games","snaps_total",
             "penalties","align_dl","align_box","align_fs","align_slot","align_corner",
             "align_nt","align_dt","align_over_ot","align_outside_ot"]
 cols = DEF_COLS if side.lower().startswith("def") else OFF_COLS
+PEN_IDX = cols.index("penalties")
+pen_pat = re.compile(r"^\d+ \(\d+\)$")
+
+def align(b):
+    """Anchor on the penalties field ('N (M)') — rows for players with no
+    coverage stats are shortened in PFF's copy, so pad zeros before PEN and
+    pad/truncate the alignment tail after it."""
+    p = next((i for i, x in enumerate(b) if pen_pat.match(x)), None)
+    if p is None:
+        return (b + [""] * len(cols))[:len(cols)]
+    head = b[:p] + ["0"] * (PEN_IDX - p) if p < PEN_IDX else b[:PEN_IDX]
+    tail = b[p + 1:] if p < PEN_IDX else b[p:][1:]
+    pen = b[p]
+    tail = (tail + ["0"] * (len(cols) - PEN_IDX - 1))[:len(cols) - PEN_IDX - 1]
+    return head + [pen] + tail
+
 with open(out, "w", newline="") as f:
     w = csv.writer(f); w.writerow(META + cols)
     for name, b in zip(names, stats):
-        b = (b + [""] * len(cols))[:len(cols)]
-        w.writerow([name, team, season, side] + b)
+        w.writerow([name, team, season, side] + align(b))
 print(f"parsed {len(stats)} players x {len(cols)} fields -> {out}")
