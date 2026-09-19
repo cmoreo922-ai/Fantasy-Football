@@ -1,0 +1,31 @@
+#,Type,QB,RB,RB,WR,WR,WR,TE,FLEX,DST,Salary,EstProj,SumOwn%
+1,CASH,Lamar Jackson $7300,Derrick Henry $7200,Javonte Williams $6400,Justin Jefferson $7800,Cooper Kupp $4100,Demarcus Robinson $3900,T.J. Hockenson $3500,D'Andre Swift $6300,Ravens $3300,49800,136.5,131
+2,CASH,Jordan Love $5900,Derrick Henry $7200,Javonte Williams $6400,Mike Evans $6600,Emeka Egbuka $6400,Brian Thomas Jr. $4800,T.J. Hockenson $3500,D'Andre Swift $6300,Panthers $2700,49800,136.0,125
+3,CASH,Dak Prescott $6400,Derrick Henry $7200,D'Andre Swift $6300,Christian Watson $6200,Rome Odunze $5500,Jalen Coker $5100,T.J. Hockenson $3500,Bucky Irving $6100,Eagles $3700,50000,135.5,131
+4,CASH,Jalen Hurts $6700,Derrick Henry $7200,Javonte Williams $6400,George Pickens $6300,Jalen Coker $5100,Cooper Kupp $4100,Mike Gesicki $3600,D'Andre Swift $6300,Eagles $3700,49400,135.5,132
+5,CASH,Lamar Jackson $7300,Derrick Henry $7200,Javonte Williams $6400,CeeDee Lamb $7300,Cooper Kupp $4100,Jerry Jeudy $3900,Michael Mayer $3600,D'Andre Swift $6300,Broncos $2800,48900,135.0,130
+6,GPP,C.J. Stroud $5500,Chase Brown $6900,Tony Pollard $5300,Jaxon Smith-Njigba $8100,CeeDee Lamb $7300,Christian Watson $6200,Hunter Henry $4000,Xavier Hutchinson $3500,Bears $3000,49800,119.0,91
+7,GPP,Baker Mayfield $5600,Derrick Henry $7200,D'Andre Swift $6300,CeeDee Lamb $7300,Emeka Egbuka $6400,Jayden Reed $4500,Brenton Strange $3900,Jerry Jeudy $3900,Packers $3400,48500,126.0,114
+8,GPP,C.J. Stroud $5500,Derrick Henry $7200,Chase Brown $6900,Mike Evans $6600,Emeka Egbuka $6400,Xavier Hutchinson $3500,Tucker Kraft $4900,Tyjae Spears $4800,49ers $3800,49600,123.5,117
+9,GPP,Dak Prescott $6400,D'Andre Swift $6300,Bucky Irving $6100,Mike Evans $6600,George Pickens $6300,Stefon Diggs $5300,Dallas Goedert $4800,Jayden Reed $4500,Ravens $3300,49600,126.5,108
+10,GPP,Dak Prescott $6400,Derrick Henry $7200,D'Andre Swift $6300,Mike Evans $6600,George Pickens $6300,Jerry Jeudy $3900,Mike Gesicki $3600,Rachaad White $5000,49ers $3800,49100,127.0,125
+11,GPP,Brock Purdy $6200,Ashton Jeanty $6800,Javonte Williams $6400,Mike Evans $6600,Rome Odunze $5500,Deebo Samuel Sr. $5300,Dallas Goedert $4800,Tyjae Spears $4800,Packers $3400,49800,119.0,95
+12,GPP,Caleb Williams $6800,David Montgomery $6500,Woody Marks $4500,CeeDee Lamb $7300,DeVonta Smith $6800,Garrett Wilson $6000,Colston Loveland $5000,T.J. Hockenson $3500,Cowboys $2900,49300,117.0,94
+13,GPP,Dak Prescott $6400,Saquon Barkley $7000,Omarion Hampton $6600,CeeDee Lamb $7300,Terry McLaurin $5200,Matthew Golden $4700,Tucker Kraft $4900,Brenton Strange $3900,Panthers $2700,48700,120.5,97
+14,GPP,Jalen Hurts $6700,Javonte Williams $6400,Bucky Irving $6100,DeVonta Smith $6800,Mike Evans $6600,Jalen Coker $5100,Dallas Goedert $4800,Justice Hill $4200,Broncos $2800,49500,126.5,101
+15,GPP,Trevor Lawrence $5800,Saquon Barkley $7000,Ashton Jeanty $6800,Stefon Diggs $5300,Jakobi Meyers $4900,Brian Thomas Jr. $4800,Colston Loveland $5000,Javonte Williams $6400,Buccaneers $3600,49600,120.0,96
+16,GPP,Caleb Williams $6800,Saquon Barkley $7000,Chris Rodriguez Jr. $5100,Mike Evans $6600,Luther Burden III $5700,Stefon Diggs $5300,Tucker Kraft $4900,Justice Hill $4200,Eagles $3700,49300,114.5,96
+17,GPP,Brock Purdy $6200,David Montgomery $6500,Bhayshul Tuten $5600,Chris Olave $7200 (Q),Mike Evans $6600,Luther Burden III $5700,Brenton Strange $3900,Deebo Samuel Sr. $5300,Cowboys $2900,49900,114.5,84
+18,GPP,Lamar Jackson $7300,Chase Brown $6900,David Montgomery $6500,DeVonta Smith $6800,Brian Thomas Jr. $4800,Jayden Reed $4500,Juwan Johnson $3900,Rashod Bateman $4400,Eagles $3700,48800,121.0,98
+19,GPP,Brock Purdy $6200,Kyle Monangai $5300,Kenny Gainwell $5100,Jaxon Smith-Njigba $8100,Rome Odunze $5500,Deebo Samuel Sr. $5300,Dallas Goedert $4800,Matthew Golden $4700,Buccaneers $3600,48600,115.0,97
+20,GPP,Lamar Jackson $7300,David Montgomery $6500,Rachaad White $5000,Chris Olave $7200 (Q),Emeka Egbuka $6400,Stefon Diggs $5300,Mark Andrews $4400,Adonai Mitchell $4000,Bears $3000,49100,114.5,87
+21,GPP,Brock Purdy $6200,Javonte Williams $6400,Bucky Irving $6100,CeeDee Lamb $7300,Garrett Wilson $6000,Jayden Reed $4500,George Kittle $4600,Tyjae Spears $4800,Bears $3000,48900,120.5,99
+22,GPP,Dak Prescott $6400,Chase Brown $6900,Rachaad White $5000,CeeDee Lamb $7300,Emeka Egbuka $6400,Adonai Mitchell $4000,Tucker Kraft $4900,Tyjae Spears $4800,Bears $3000,48700,114.0,88
+23,GPP,Jordan Love $5900,Saquon Barkley $7000,Bhayshul Tuten $5600,CeeDee Lamb $7300,Christian Watson $6200,Jalen Coker $5100,George Kittle $4600,Woody Marks $4500,Panthers $2700,48900,121.0,90
+24,GPP,Caleb Williams $6800,Saquon Barkley $7000,Ashton Jeanty $6800,Luther Burden III $5700,Jayden Reed $4500,Adonai Mitchell $4000,Colston Loveland $5000,Kenny Gainwell $5100,Buccaneers $3600,48500,110.5,87
+25,GPP,Geno Smith $4800,Saquon Barkley $7000,David Montgomery $6500,Christian Watson $6200,Garrett Wilson $6000,Jalen Coker $5100,Dallas Goedert $4800,Chris Rodriguez Jr. $5100,Eagles $3700,49200,118.5,92
+26,GPP,Drake Maye $6100,Ashton Jeanty $6800,Bucky Irving $6100,Chris Olave $7200 (Q),Emeka Egbuka $6400,Rome Odunze $5500,Hunter Henry $4000,Pat Freiermuth $3700,Cowboys $2900,48700,111.0,74
+27,GPP,Trevor Lawrence $5800,Chase Brown $6900,Ashton Jeanty $6800,Luther Burden III $5700,Rome Odunze $5500,Jakobi Meyers $4900,Mark Andrews $4400,Chris Rodriguez Jr. $5100,Eagles $3700,48800,112.0,83
+28,GPP,Dak Prescott $6400,Saquon Barkley $7000,Omarion Hampton $6600,George Pickens $6300,Terry McLaurin $5200,Jakobi Meyers $4900,Juwan Johnson $3900,Bhayshul Tuten $5600,Bears $3000,48900,117.5,88
+29,GPP,Jordan Love $5900,Chase Brown $6900,Ashton Jeanty $6800,Garrett Wilson $6000,Matthew Golden $4700,Cooper Kupp $4100,Mark Andrews $4400,Omarion Hampton $6600,49ers $3800,49200,120.5,95
+30,GPP,Caleb Williams $6800,Breece Hall $6200,Bucky Irving $6100,Jaxon Smith-Njigba $8100,Deebo Samuel Sr. $5300,Adonai Mitchell $4000,Colston Loveland $5000,T.J. Hockenson $3500,Eagles $3700,48700,116.5,95
