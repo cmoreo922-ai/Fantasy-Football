@@ -53,3 +53,38 @@ prefer the freshest source for lines/injuries.)
   selection guides
 - 4for4 DFS bankroll management guide
 - RotoGrinders DraftKings NFL strategy + site scoring comparison
+
+## PFF+ data packages in `data/pff/2026/`
+
+Chris's PFF+ subscription feeds the repo two ways:
+
+1. **Per-team grade pastes** (`data/pff/2026/raw/` → `parsed/` via
+   `scripts/parse_pff_paste.py`). Used Weeks 1–2.
+2. **Weekly bulk export package** starting Week 5:
+   `data/pff/2026/wk05-package/` (read its `README_for_Claude.md` first).
+   Exported Oct 8, 2026, PPR scoring. Contents:
+   - `master_players_week5.csv` — **start here.** One row per QB/RB/WR/TE/K/DST
+     joining Week 5 projection + expert rank, ROS rank, season-to-date stats,
+     expected points (xFP), 2026 PFF grades + snaps, position SOS, and the
+     team's/opponent's team-level PFF grades.
+   - Supporting 2026 tables: projections, rankings, season stats (QB/skill/K/
+     DST/IDP), expected points, player grades, team grades, SOS by position,
+     pre-Week-5 power ratings.
+   - `history/` — 2020–2025 season stats, PFF grades, team grades, xFP
+     (2024–25), plus `player_trends.csv` / `team_trends.csv` (PPG and
+     positional finish by season, 3-yr baselines, team changes).
+   - The two Excel workbooks in the original zip duplicate the CSVs and were
+     not committed.
+
+   How to use it in `/weekly-picks`:
+   - Team/roster claims: the **DK salary CSV is still authoritative**; the
+     package's `team` column is a second check (both must agree).
+   - `sos_wk5` is 0–10, **higher = easier**; `opp_pff_*` grades are higher =
+     tougher defense.
+   - `xfp_ppg_over_expected` positive = running hot (regression risk);
+     negative = usage says buy-low.
+   - 2026 grades/stats are a ~4-game sample. Lean on `history/player_trends.csv`
+     (`ppg_3yr_avg_2023_2025`, `ppg_2026td_vs_3yr_avg`) before trusting a
+     spike.
+   - It has **no salaries, no Vegas lines, no game logs, no snap/target
+     trends by week** — those still come from the DK CSV and fresh research.
