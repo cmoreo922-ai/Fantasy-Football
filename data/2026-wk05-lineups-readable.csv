@@ -1,0 +1,31 @@
+#,Type,QB,RB,RB,WR,WR,WR,TE,FLEX,DST,Salary,EstProj,SumOwn%
+1,CASH,Jordan Love $5700,Jahmyr Gibbs $9800,Jonathan Taylor $7800,Michael Wilson $6200,Malik Washington $4600,Roman Wilson $3700,Mike Gesicki $4100,Braelon Allen $5400,Jets $2700,50000,132.0,127
+2,CASH,Sam Darnold $5800,Jonathan Taylor $7800,Chase Brown $6900,Amon-Ra St. Brown $7900,Malik Washington $4600,Roman Wilson $3700,Tucker Kraft $4700,Braelon Allen $5400,Broncos $3200,50000,130.0,113
+3,CASH,Aaron Rodgers $5300,Chase Brown $6900,Aaron Jones Sr. $6500,Amon-Ra St. Brown $7900,Garrett Wilson $6600,Roman Wilson $3700,Sam LaPorta $4900,Emanuel Wilson $5300,Jets $2700,49800,129.5,112
+4,CASH,Aaron Rodgers $5300,Jahmyr Gibbs $9800,TreVeyon Henderson $5000,Amon-Ra St. Brown $7900,DK Metcalf $5400,Malik Washington $4600,Tyler Warren $5000,Mike Gesicki $4100,Commanders $2900,50000,129.5,108
+5,CASH,Jacoby Brissett $5500,Jonathan Taylor $7800,Braelon Allen $5400,Garrett Wilson $6600,Christian Watson $6400,Malik Washington $4600,Sam LaPorta $4900,Emanuel Wilson $5300,Patriots $3000,49500,129.5,117
+6,GPP,Tyler Shough $6100,Ashton Jeanty $7200 (Q),Braelon Allen $5400,Chris Olave $7700,DK Metcalf $5400,Antonio Williams $3800,George Kittle $5200,Juwan Johnson $4500,Texans $3400,48700,120.0,90
+7,GPP,Jared Goff $6600,Omarion Hampton $6000,Quinshon Judkins $5700,Amon-Ra St. Brown $7900,Josh Downs $6000,Malik Washington $4600,Sam LaPorta $4900,Dohnte Meyers $3500 (Q),Texans $3400,48600,124.5,108
+8,GPP,Jacoby Brissett $5500,Chase Brown $6900,D'Andre Swift $6200 (Q),Michael Wilson $6200,Luther Burden III $4900,Malik Washington $4600,Trey McBride $6700,Sam LaPorta $4900,Commanders $2900,48800,130.0,122
+9,GPP,Jared Goff $6600,Cam Skattebo $6000 (Q),MarShawn Lloyd $4800,Chris Olave $7700,Michael Wilson $6200,Jameson Williams $5900,Sam LaPorta $4900,Isaiah Williams $3700,Broncos $3200,49000,121.0,93
+10,GPP,Jacoby Brissett $5500,D'Andre Swift $6200 (Q),Braelon Allen $5400,Michael Wilson $6200,Jameson Williams $5900,DK Metcalf $5400,Trey McBride $6700,Emanuel Wilson $5300,Patriots $3000,49600,128.5,120
+11,GPP,Joe Burrow $6900,Jahmyr Gibbs $9800,Emanuel Wilson $5300,Garrett Wilson $6600,Jameson Williams $5900,Malik Washington $4600,Mike Gesicki $4100,Efton Chism III $3200,Patriots $3000,49400,126.0,105
+12,GPP,Jared Goff $6600,Chase Brown $6900,Jaylen Warren $6700,Garrett Wilson $6600,Roman Wilson $3700,Efton Chism III $3200,Trey McBride $6700,Sam LaPorta $4900,Steelers $3300,48600,128.0,111
+13,GPP,Brock Purdy $6500,Chase Brown $6900,Braelon Allen $5400,Mike Evans $6500 (Q),Josh Downs $6000,DK Metcalf $5400,Harold Fannin Jr. $4400,Emanuel Wilson $5300,Titans $2100,48500,118.5,82
+14,GPP,Jacoby Brissett $5500,Jonathan Taylor $7800,Braelon Allen $5400,Michael Wilson $6200,Jameson Williams $5900,Matthew Golden $5700,Trey McBride $6700,Isaiah Williams $3700,Raiders $2500,49400,128.0,109
+15,GPP,Jared Goff $6600,Ashton Jeanty $7200 (Q),Quinshon Judkins $5700,Amon-Ra St. Brown $7900,Jameson Williams $5900,Antonio Williams $3800,Sam LaPorta $4900,TreVeyon Henderson $5000,Commanders $2900,49900,124.0,95
+16,GPP,Jared Goff $6600,Jonathan Taylor $7800,Emanuel Wilson $5300,Michael Wilson $6200,Jameson Williams $5900,Tre Tucker $4800,Sam LaPorta $4900,Roman Wilson $3700,Bengals $3500,48700,123.0,107
+17,GPP,Jayden Daniels $6000,Chase Brown $6900,Omarion Hampton $6000,Nico Collins $7500,Antonio Williams $3800,Roman Wilson $3700,Brock Bowers $7000,Braelon Allen $5400,Jets $2700,49000,122.5,101
+18,GPP,Aaron Rodgers $5300,Jahmyr Gibbs $9800,D'Andre Swift $6200 (Q),Michael Wilson $6200,Romeo Doubs $5000,Roman Wilson $3700,George Kittle $5200,MarShawn Lloyd $4800,Texans $3400,49600,126.5,118
+19,GPP,Tyler Shough $6100,Aaron Jones Sr. $6500,MarShawn Lloyd $4800,Jaxon Smith-Njigba $8800,Matthew Golden $5700,Roman Wilson $3700,Trey McBride $6700,Juwan Johnson $4500,Patriots $3000,49800,122.5,91
+20,GPP,Sam Darnold $5800,David Montgomery $5800,TreVeyon Henderson $5000,Jaxon Smith-Njigba $8800,Jameson Williams $5900,Malik Washington $4600,Trey McBride $6700,Efton Chism III $3200,Broncos $3200,49000,119.5,88
+21,GPP,Caleb Williams $6200 (Q),Jahmyr Gibbs $9800,Quinshon Judkins $5700,Christian Watson $6400,Josh Downs $6000,Luther Burden III $4900,Dalton Schultz $4000,Efton Chism III $3200,Texans $3400,49600,123.0,95
+22,GPP,Drake Maye $6300,Chase Brown $6900,Omarion Hampton $6000,Chris Olave $7700,Josh Downs $6000,Romeo Doubs $5000,Tucker Kraft $4700,Efton Chism III $3200,Jets $2700,48500,118.0,72
+23,GPP,Kirk Cousins $5400,Jaylen Warren $6700,Aaron Jones Sr. $6500,Garrett Wilson $6600,Tre Tucker $4800,Efton Chism III $3200,Trey McBride $6700,Quinshon Judkins $5700,Texans $3400,49000,121.5,88
+24,GPP,Jacoby Brissett $5500,Quinshon Judkins $5700,Emanuel Wilson $5300,Amon-Ra St. Brown $7900,Michael Wilson $6200,Jameson Williams $5900,Mike Gesicki $4100,Romeo Doubs $5000,Steelers $3300,48900,122.0,99
+25,GPP,Tyler Shough $6100,Christian McCaffrey $8200,Chase Brown $6900,Justin Jefferson $7300 (Q),Denzel Boston $5200,Tre Tucker $4800,Juwan Johnson $4500,Efton Chism III $3200,Packers $2700,48900,117.0,70
+26,GPP,Aaron Rodgers $5300,Quinshon Judkins $5700,Emanuel Wilson $5300,Amon-Ra St. Brown $7900,Josh Downs $6000,DK Metcalf $5400,Trey McBride $6700,Efton Chism III $3200,Texans $3400,48900,123.5,99
+27,GPP,Tyler Shough $6100,Jonathan Taylor $7800,Aaron Jones Sr. $6500,Jaylen Waddle $6100,Denzel Boston $5200,Luther Burden III $4900,Tucker Kraft $4700,Juwan Johnson $4500,Texans $3400,49200,118.5,80
+28,GPP,Jordan Love $5700,Jonathan Taylor $7800,Ashton Jeanty $7200 (Q),Matthew Golden $5700,Luther Burden III $4900,Isaiah Williams $3700,Harold Fannin Jr. $4400,Jaylen Warren $6700,Texans $3400,49500,122.5,88
+29,GPP,Kirk Cousins $5400,Jonathan Taylor $7800,TreVeyon Henderson $5000,Amon-Ra St. Brown $7900,Matthew Golden $5700,Denzel Boston $5200,Mike Gesicki $4100,Tre Tucker $4800,Bengals $3500,49400,118.5,76
+30,GPP,Drake Maye $6300,Jahmyr Gibbs $9800,Quinshon Judkins $5700,Justin Jefferson $7300 (Q),Romeo Doubs $5000,Tre Tucker $4800,Dalton Schultz $4000,Antonio Williams $3800,Broncos $3200,49900,120.0,82

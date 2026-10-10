@@ -1,0 +1,161 @@
+<title>Week 5 War Room</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#f2f5f1; --surface:#ffffff; --surface2:#e9efe9; --line:#d3ddd3;
+    --ink:#15221a; --muted:#5c6f62; --accent:#1e8f26; --accent-ink:#ffffff;
+    --gold:#a86f00; --risk:#b35a10; --danger:#bf322a; --chip:#e4ebe3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0c1210; --surface:#151d19; --surface2:#1b2620; --line:#2a3830;
+      --ink:#e9f1eb; --muted:#93a89b; --accent:#57d63b; --accent-ink:#0b1509;
+      --gold:#f2b32d; --risk:#e88b3a; --danger:#e5564d; --chip:#233029;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0c1210; --surface:#151d19; --surface2:#1b2620; --line:#2a3830;
+    --ink:#e9f1eb; --muted:#93a89b; --accent:#57d63b; --accent-ink:#0b1509;
+    --gold:#f2b32d; --risk:#e88b3a; --danger:#e5564d; --chip:#233029;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font:16px/1.55 Barlow,system-ui,sans-serif; margin:0; padding-block:0 64px; padding-inline:16px}
+  .wrap{max-width:1040px; margin:0 auto}
+  h1,h2,h3{font-family:"Barlow Condensed",Barlow,sans-serif; text-wrap:balance; margin:0}
+  header{padding-block:40px 22px; border-bottom:2px solid var(--accent); display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; justify-content:space-between}
+  .kick{color:var(--accent); font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:14px}
+  h1{font-size:clamp(38px,9vw,56px); font-weight:800; line-height:.95; text-transform:uppercase}
+  .sub{color:var(--muted); margin-top:6px; max-width:58ch}
+  .targets{display:flex; gap:10px; flex-wrap:wrap}
+  .target{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 16px; text-align:center; min-width:112px}
+  .target .n{font:600 26px/1 "IBM Plex Mono",monospace; color:var(--accent); font-variant-numeric:tabular-nums}
+  .target.gpp .n{color:var(--gold)}
+  .target .l{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em}
+  section{margin-top:44px}
+  .sechead{display:flex; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap}
+  h2{font-size:clamp(24px,5vw,30px); font-weight:800; text-transform:uppercase; letter-spacing:.02em}
+  .secnote{color:var(--muted); font-size:14px}
+  .games{display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:8px}
+  .game{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px}
+  .game .m{font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:700; font-size:18px}
+  .game .t{font:500 12.5px/1.5 "IBM Plex Mono",monospace; color:var(--muted); font-variant-numeric:tabular-nums}
+  .game.hot{border-color:var(--accent); box-shadow:inset 3px 0 0 var(--accent)}
+  .game.cold{opacity:.62}
+  .game .tag{font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--accent); font-weight:700}
+  .game.cold .tag{color:var(--danger)}
+  .picks{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px}
+  .pick{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; gap:8px}
+  .prow{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .pos{font:700 12px/1 "Barlow Condensed",Barlow,sans-serif; letter-spacing:.06em; background:var(--chip); border-radius:4px; padding:5px 7px; color:var(--muted); min-width:34px; text-align:center}
+  .pname{font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:700; font-size:21px; flex:1; min-width:120px}
+  .sal{font:600 14px/1 "IBM Plex Mono",monospace; background:var(--chip); padding:5px 8px; border-radius:4px}
+  .meta{font-size:12.5px; color:var(--muted); display:flex; gap:10px; flex-wrap:wrap}
+  .why{font-size:14px}
+  .fit{font-size:12px; color:var(--accent); font-weight:600}
+  .lock .sal{background:var(--accent); color:var(--accent-ink)}
+  .risky{border-left:3px solid var(--risk)} .risky .fit{color:var(--risk)}
+  .avoid{border-left:3px solid var(--danger)} .avoid .fit{color:var(--danger)}
+  .qtag{font:600 11px/1 "IBM Plex Mono",monospace; color:var(--risk)}
+  .feature{background:linear-gradient(135deg,var(--surface),var(--surface2)); border:1px solid var(--gold); border-radius:10px; padding:22px 24px}
+  .feature .big{font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:800; font-size:clamp(30px,7vw,44px); line-height:1}
+  .feature .fsal{font:600 30px/1 "IBM Plex Mono",monospace; color:var(--gold)}
+  .feature p{margin:8px 0 0; max-width:64ch}
+  /* lessons — numbered because they ARE an ordered set of rules now in code */
+  .rules{display:grid; gap:8px}
+  .rule{display:grid; grid-template-columns:34px 1fr; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; align-items:start}
+  .rule .n{font:600 20px/1 "IBM Plex Mono",monospace; color:var(--danger)}
+  .rule b{font-family:"Barlow Condensed",Barlow,sans-serif; font-size:19px; letter-spacing:.01em}
+  .rule p{margin:4px 0 0; font-size:14px; color:var(--muted)}
+  .lus{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px}
+  .lu{background:var(--surface); border:1px solid var(--line); border-radius:8px; overflow:hidden}
+  .lu h3{padding:11px 14px; font-size:19px; text-transform:uppercase; background:var(--surface2); display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .lu h3 .b{font:600 12px/1 "IBM Plex Mono",monospace; color:var(--muted)}
+  .lu table{width:100%; border-collapse:collapse; font-size:13.5px}
+  .lu td{padding:6px 14px; border-top:1px solid var(--line)}
+  .lu td.s{font:500 12.5px "IBM Plex Mono",monospace; text-align:right; color:var(--muted); font-variant-numeric:tabular-nums}
+  .lu td.p{color:var(--muted); width:44px; font-weight:600; font-size:11.5px}
+  .stackrow{color:var(--accent); font-weight:600}
+  .exp{display:flex; flex-direction:column; gap:6px; max-width:560px}
+  .erow{display:grid; grid-template-columns:minmax(110px,150px) 1fr 34px; gap:10px; align-items:center; font-size:13.5px}
+  .ebar{height:10px; background:var(--surface2); border-radius:5px; overflow:hidden}
+  .ebar i{display:block; height:100%; background:var(--accent)}
+  .erow .n{font:500 12.5px "IBM Plex Mono",monospace; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums}
+  .capline{margin-top:10px; font-size:13px; color:var(--muted)}
+  .check{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:16px 20px; font-size:14.5px}
+  .check li{margin:5px 0}
+  .foot{margin-top:40px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:14px; max-width:74ch}
+</style>
+<div class="wrap">
+<header>
+  <div>
+    <div class="kick">DraftKings Classic · Main Slate · Sun Oct 11, 2026</div>
+    <h1>Week 5 War Room</h1>
+    <div class="sub">11 games, $50K cap. Lock <b>7:00 AM HST</b>; DEN@LAC, DET@ARI and SF@SEA stay swappable until 10:05–10:25. First slate built on the full PFF+ package: projections, expected points, grades and six years of history.</div>
+  </div>
+  <div class="targets">
+    <div class="target"><div class="n">125</div><div class="l">Cash line</div></div>
+    <div class="target gpp"><div class="n">235+</div><div class="l">Milly to win</div></div>
+    <div class="target"><div class="n">8</div><div class="l">Max lineups/player</div></div>
+  </div>
+</header>
+
+<section>
+  <div class="sechead"><h2>Slate Map</h2><div class="secnote">implied points per team, consensus lines Oct 9–10</div></div>
+  <div class="games"><div class="game hot"><div class="m">DET @ ARI</div><div class="t">DET −5.5 · O/U 54.5</div><div class="t">DET 30 / ARI 24.5</div><div class="tag">Shootout · both sides</div></div><div class="game hot"><div class="m">CIN @ MIA</div><div class="t">CIN −7 · O/U 43.5</div><div class="t">CIN 25.25 / MIA 18.25</div><div class="tag">CIN run game</div></div><div class="game "><div class="m">SF @ SEA</div><div class="t">SEA −3 · O/U 46</div><div class="t">SEA 24.5 / SF 21.5</div></div><div class="game "><div class="m">LV @ NE</div><div class="t">NE −3.5 · O/U 45</div><div class="t">NE 24.25 / LV 20.75</div></div><div class="game "><div class="m">CHI @ GB</div><div class="t">CHI −2 · O/U 46</div><div class="t">CHI 24 / GB 22</div><div class="tag">Caleb Q</div></div><div class="game "><div class="m">IND @ PIT</div><div class="t">PIT −2.5 · O/U 44</div><div class="t">PIT 23.25 / IND 20.75</div><div class="tag">Soft IND coverage</div></div><div class="game "><div class="m">HOU @ TEN</div><div class="t">HOU −7.5 · O/U 38.5</div><div class="t">HOU 23 / TEN 15.5</div><div class="tag">Texans DST</div></div><div class="game "><div class="m">DEN @ LAC</div><div class="t">DEN −3.5 · O/U 42</div><div class="t">DEN 22.75 / LAC 19.25</div></div><div class="game "><div class="m">NYG @ WAS</div><div class="t">WAS −3.5 · O/U 42</div><div class="t">WAS 22.75 / NYG 19.25</div></div><div class="game "><div class="m">MIN @ NO</div><div class="t">MIN −2 · O/U 42.5</div><div class="t">MIN 22.25 / NO 20.25</div></div><div class="game cold"><div class="m">CLE @ NYJ</div><div class="t">NYJ −2 · O/U 40</div><div class="t">NYJ 21 / CLE 19</div><div class="tag">Low total</div></div></div>
+  <p class="capline">Detroit at Arizona is 8 points clear of every other total, with a spread close enough that both sides score. It is the only game where lineups may hold four players.</p>
+</section>
+
+<section>
+  <div class="sechead"><h2>💎 Value Pick of the Week</h2></div>
+  <div class="feature">
+    <div class="big">Braelon Allen · RB · NYJ</div>
+    <div class="meta" style="margin-top:8px"><span>CLE @ NYJ · Jets favored at home</span><span class="fsal">$5,400</span></div>
+    <p>Breece Hall is <b>out</b>, and Allen is the lead back. PFF projects him for <b>14.3</b>, which is 2.65 points per $1,000, the best rate of any running back priced over $5,000. He has a 68.4 grade on limited work. The risk is the low team total of 21 and only 33 carries so far, so 15 points is closer to his ceiling than his floor.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>🔒 Must-Haves</h2><div class="secnote">locked roles in the best environments, 2026 numbers through Week 4</div></div>
+  <div class="picks"><div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">Jahmyr Gibbs</span><span class="sal">$9,800</span></div><div class="meta"><span>DET@ARI · DET 30 implied</span></div><div class="why">29.5 PPG, 87.4 grade, 26 targets. PFF projects 24.2, the highest of any player on the slate.</div><div class="fit">Arizona: 59.8 run defense, 48.2 coverage.</div></div><div class="pick lock"><div class="prow"><span class="pos">WR</span><span class="pname">Amon-Ra St. Brown</span><span class="sal">$7,900</span></div><div class="meta"><span>DET@ARI · 54.5 total</span></div><div class="why">44 targets in four games and 22.8 PPG in the slate's best game.</div></div><div class="pick lock"><div class="prow"><span class="pos">QB</span><span class="pname">Jacoby Brissett</span><span class="sal">$5,500</span></div><div class="meta"><span>DET@ARI · ARI 24.5 implied</span></div><div class="why">PFF projects 19.1, third among slate QBs, at the 12th-highest QB salary. Arizona will be chasing a 30-point offense.</div><div class="fit">Marvin Harrison Jr. is out, which concentrates the passing game.</div></div><div class="pick lock"><div class="prow"><span class="pos">WR</span><span class="pname">Michael Wilson</span><span class="sal">$6,200</span></div><div class="meta"><span>DET@ARI · ARI 24.5 implied</span></div><div class="why">40 targets. Expected 18.8 PPG but scoring 14.2. The usage says the points are coming.</div></div><div class="pick lock"><div class="prow"><span class="pos">TE</span><span class="pname">Trey McBride</span><span class="sal">$6,700</span></div><div class="meta"><span>DET@ARI · ARI 24.5 implied</span></div><div class="why">43 targets, the most of any tight end. PFF's TE1 at 17.7.</div></div><div class="pick lock"><div class="prow"><span class="pos">TE</span><span class="pname">Sam LaPorta</span><span class="sal">$4,900</span></div><div class="meta"><span>DET@ARI · DET 30 implied</span></div><div class="why">27 targets and a 78.2 grade. The cheap way into the Detroit stack.</div></div><div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">Jonathan Taylor</span><span class="sal">$7,800</span></div><div class="meta"><span>IND@PIT · IND 20.75</span></div><div class="why">86 carries and 22 PPG. PFF's RB2 at 18.7.</div></div><div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">Chase Brown</span><span class="sal">$6,900</span></div><div class="meta"><span>CIN@MIA · CIN 25.25</span></div><div class="why">Expected 17.1 PPG but scoring 14.5, as a 7-point favorite against a 60.3 run defense.</div></div><div class="pick lock"><div class="prow"><span class="pos">DST</span><span class="pname">Texans</span><span class="sal">$3,400</span></div><div class="meta"><span>HOU@TEN · TEN 15.5 implied</span></div><div class="why">Tennessee has the lowest implied total on the slate and is 0-4.</div></div></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>🚀 Risky · High Ceiling</h2><div class="secnote">GPP only; never more than one questionable player per lineup</div></div>
+  <div class="picks"><div class="pick risky"><div class="prow"><span class="pos">STK</span><span class="pname">Jared Goff</span><span class="sal">$6,600</span></div><div class="meta"><span>DET@ARI · stack with ARSB + LaPorta + Gibbs</span></div><div class="why">85.8 grade, 21.5 PPG. The full Detroit stack is the highest-ceiling build on the slate. At four players from one game, a Detroit dud sinks the lineup.</div><div class="fit">Bring-back: Michael Wilson or McBride.</div></div><div class="pick risky"><div class="prow"><span class="pos">WR</span><span class="pname">Justin Jefferson</span><span class="sal">$7,300</span></div><div class="meta"><span>MIN@NO · MIN 22.25</span><span class=qtag>Q · max 1 Q per lineup</span></div><div class="why">Limited all week with an ankle sprain; says he'll play. 85.4 grade when healthy.</div></div><div class="pick risky"><div class="prow"><span class="pos">RB</span><span class="pname">D&#x27;Andre Swift</span><span class="sal">$6,200</span></div><div class="meta"><span>CHI@GB · CHI 24</span><span class=qtag>Q</span></div><div class="why">Monangai is out, so Swift should get the backfield to himself. He carries a questionable tag and his QB is questionable too.</div></div><div class="pick risky"><div class="prow"><span class="pos">WR</span><span class="pname">Dohnte Meyers</span><span class="sal">$3,500</span></div><div class="meta"><span>CIN@MIA · CIN 25.25</span><span class=qtag>depends on Chase</span></div><div class="why">PFF projects 13.5 at $3,500 because it assumes Chase and Higgins sit. If Chase is active, swap him out.</div></div><div class="pick risky"><div class="prow"><span class="pos">QB</span><span class="pname">Caleb Williams</span><span class="sal">$6,200</span></div><div class="meta"><span>CHI@GB · CHI 24</span><span class=qtag>Q · 3/30 max</span></div><div class="why">23 DK PPG this year, hamstring. Conflicting reports on whether he plays. Tyson Bagent starts if not.</div></div></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>⛔ Stay Away</h2></div>
+  <div class="picks"><div class="pick avoid"><div class="prow"><span class="pos">WR</span><span class="pname">Jaxon Smith-Njigba</span><span class="sal">$8,800</span></div><div class="meta"><span>SF@SEA · SEA 24.5</span></div><div class="why">29 PPG, but 8.9 PPG over expected. The biggest regression flag on the slate, at the highest WR price.</div><div class="fit">In 2 of 30 lineups.</div></div><div class="pick avoid"><div class="prow"><span class="pos">WR</span><span class="pname">Nico Collins</span><span class="sal">$7,500</span></div><div class="meta"><span>HOU@TEN · HOU 23</span></div><div class="why">26 PPG on just two games and 9.4 over expected. Low team total.</div></div><div class="pick avoid"><div class="prow"><span class="pos">RB</span><span class="pname">Christian McCaffrey</span><span class="sal">$8,200</span></div><div class="meta"><span>SF@SEA · SF 21.5</span></div><div class="why">$8,200 for 18.5 PPG on the road against Seattle's 75.0 coverage. Pay up for Gibbs instead.</div></div><div class="pick avoid"><div class="prow"><span class="pos">QB</span><span class="pname">Kyler Murray</span><span class="sal">$5,200</span></div><div class="meta"><span>MIN@NO · MIN 22.25</span></div><div class="why">PFF projects 17.7, but he's averaged 7.8 PPG on 148 snaps this year. The projection reflects the name, not the role.</div></div></div>
+  <p class="capline">Also avoid all of Tennessee, the Chargers' passing game, and MarShawn Lloyd in cash.</p>
+</section>
+
+<section>
+  <div class="sechead"><h2>Flagship Lineups</h2><div class="secnote">all 30 are in the upload file; projections are Claude estimates</div></div>
+  <div class="lus">
+    <div class="lu"><h3>Cash #1 <span class="b">$50,000 · est 132.0</span></h3><table><tr><td class="p">QB</td><td>Jordan Love</td><td class="s">$5,700</td></tr><tr><td class="p">RB</td><td>Jahmyr Gibbs</td><td class="s">$9,800</td></tr><tr><td class="p">RB</td><td>Jonathan Taylor</td><td class="s">$7,800</td></tr><tr><td class="p">WR</td><td>Michael Wilson</td><td class="s">$6,200</td></tr><tr><td class="p">WR</td><td>Malik Washington</td><td class="s">$4,600</td></tr><tr><td class="p">WR</td><td>Roman Wilson</td><td class="s">$3,700</td></tr><tr><td class="p">TE</td><td>Mike Gesicki</td><td class="s">$4,100</td></tr><tr><td class="p">FLEX</td><td>Braelon Allen</td><td class="s">$5,400</td></tr><tr><td class="p">DST</td><td>Jets</td><td class="s">$2,700</td></tr></table><div class="capline" style="padding:8px 14px 12px">Floor build: Gibbs and Taylor for volume, three cheap WRs with locked targets, no questionable tags.</div></div>
+    <div class="lu"><h3>GPP #8 · ARI side <span class="b">$48,800 · est 130.0</span></h3><table><tr><td class="p">QB</td><td>Jacoby Brissett</td><td class="s">$5,500</td></tr><tr><td class="p">RB</td><td>Chase Brown</td><td class="s">$6,900</td></tr><tr><td class="p">RB</td><td>D&#x27;Andre Swift <span class="qtag">Q</span></td><td class="s">$6,200</td></tr><tr><td class="p">WR</td><td>Michael Wilson</td><td class="s">$6,200</td></tr><tr><td class="p">WR</td><td>Luther Burden III</td><td class="s">$4,900</td></tr><tr><td class="p">WR</td><td>Malik Washington</td><td class="s">$4,600</td></tr><tr><td class="p">TE</td><td>Trey McBride</td><td class="s">$6,700</td></tr><tr><td class="p">FLEX</td><td>Sam LaPorta</td><td class="s">$4,900</td></tr><tr><td class="p">DST</td><td>Commanders</td><td class="s">$2,900</td></tr></table><div class="capline" style="padding:8px 14px 12px">Brissett, Michael Wilson and McBride from the shootout, with LaPorta as the bring-back. One Q tag: Swift.</div></div>
+    <div class="lu"><h3>GPP #7 · DET side <span class="b">$48,600 · est 124.5</span></h3><table><tr><td class="p">QB</td><td>Jared Goff</td><td class="s">$6,600</td></tr><tr><td class="p">RB</td><td>Omarion Hampton</td><td class="s">$6,000</td></tr><tr><td class="p">RB</td><td>Quinshon Judkins</td><td class="s">$5,700</td></tr><tr><td class="p">WR</td><td>Amon-Ra St. Brown</td><td class="s">$7,900</td></tr><tr><td class="p">WR</td><td>Josh Downs</td><td class="s">$6,000</td></tr><tr><td class="p">WR</td><td>Malik Washington</td><td class="s">$4,600</td></tr><tr><td class="p">TE</td><td>Sam LaPorta</td><td class="s">$4,900</td></tr><tr><td class="p">FLEX</td><td>Dohnte Meyers <span class="qtag">Q</span></td><td class="s">$3,500</td></tr><tr><td class="p">DST</td><td>Texans</td><td class="s">$3,400</td></tr></table><div class="capline" style="padding:8px 14px 12px">Goff, St. Brown and LaPorta. Meyers is the Chase-dependent piece: swap him if Chase plays.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Portfolio Exposure</h2><div class="secnote">5 cash + 25 GPP · top 16 players</div></div>
+  <div class="exp"><div class="erow"><span>Jonathan Taylor</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Michael Wilson</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Malik Washington</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Roman Wilson</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Braelon Allen</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Chase Brown</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Amon-Ra St. Brown</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Sam LaPorta</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Emanuel Wilson</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Texans</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Trey McBride</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Jameson Williams</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Efton Chism III</span><div class="ebar"><i style="width:100%"></i></div><span class="n">8</span></div><div class="erow"><span>Quinshon Judkins</span><div class="ebar"><i style="width:88%"></i></div><span class="n">7</span></div><div class="erow"><span>Jahmyr Gibbs</span><div class="ebar"><i style="width:75%"></i></div><span class="n">6</span></div><div class="erow"><span>Mike Gesicki</span><div class="ebar"><i style="width:62%"></i></div><span class="n">5</span></div></div>
+  <p class="capline">Hard cap 8 of 30. Cash lineups use no questionable players and no punt averaging under 8 points per game.</p>
+</section>
+
+<section>
+  <div class="sechead"><h2>Before Lock</h2><div class="secnote">Hawaii time</div></div>
+  <div class="check"><ul>
+    <li><b>Saturday night:</b> confirm final designations for Caleb Williams, Jeanty and Jefferson.</li>
+    <li><b>5:30 AM inactives:</b> Chase, Higgins, Jefferson, Jeanty, Caleb Williams, Swift.</li>
+    <li><b>If Chase is active:</b> swap Dohnte Meyers out of any lineup that has him.</li>
+    <li><b>If Jeanty is out:</b> swap to another running back in his price range.</li>
+    <li><b>7:00 AM:</b> early games lock. Detroit, Arizona, Seattle, San Francisco, Denver and LA players can still be swapped until 10:05.</li>
+    <li><b>Bankroll:</b> the log is still empty. Keep this slate at 5–10% of bankroll and record the entries before lock.</li>
+  </ul></div>
+</section>
+
+<div class="foot">Sources: PFF+ Week 5 export (Oct 8), DraftKings salaries, and lines and injury reports from ESPN, Fox Sports, CBS Sports, Sharp Football Analysis, NFL.com and team sites, Oct 9–10. Projections and ownership are Claude estimates.</div>
+</div>
