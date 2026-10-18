@@ -1,0 +1,168 @@
+<title>Week 6 War Room</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#f2f5f1; --surface:#ffffff; --surface2:#e9efe9; --line:#d3ddd3;
+    --ink:#15221a; --muted:#5c6f62; --accent:#1e8f26; --accent-ink:#ffffff;
+    --gold:#a86f00; --risk:#b35a10; --danger:#bf322a; --chip:#e4ebe3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0c1210; --surface:#151d19; --surface2:#1b2620; --line:#2a3830;
+      --ink:#e9f1eb; --muted:#93a89b; --accent:#57d63b; --accent-ink:#0b1509;
+      --gold:#f2b32d; --risk:#e88b3a; --danger:#e5564d; --chip:#233029;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0c1210; --surface:#151d19; --surface2:#1b2620; --line:#2a3830;
+    --ink:#e9f1eb; --muted:#93a89b; --accent:#57d63b; --accent-ink:#0b1509;
+    --gold:#f2b32d; --risk:#e88b3a; --danger:#e5564d; --chip:#233029;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font:16px/1.55 Barlow,system-ui,sans-serif; margin:0; padding-block:0 64px; padding-inline:16px}
+  .wrap{max-width:1040px; margin:0 auto}
+  h1,h2,h3{font-family:"Barlow Condensed",Barlow,sans-serif; text-wrap:balance; margin:0}
+  header{padding-block:40px 22px; border-bottom:2px solid var(--accent); display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; justify-content:space-between}
+  .kick{color:var(--accent); font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:14px}
+  h1{font-size:clamp(38px,9vw,56px); font-weight:800; line-height:.95; text-transform:uppercase}
+  .sub{color:var(--muted); margin-top:6px; max-width:58ch}
+  .targets{display:flex; gap:10px; flex-wrap:wrap}
+  .target{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 16px; text-align:center; min-width:112px}
+  .target .n{font:600 26px/1 "IBM Plex Mono",monospace; color:var(--accent); font-variant-numeric:tabular-nums}
+  .target.gpp .n{color:var(--gold)}
+  .target .l{font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em}
+  section{margin-top:44px}
+  .sechead{display:flex; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap}
+  h2{font-size:clamp(24px,5vw,30px); font-weight:800; text-transform:uppercase; letter-spacing:.02em}
+  .secnote{color:var(--muted); font-size:14px}
+  .games{display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:8px}
+  .game{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px}
+  .game .m{font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:700; font-size:18px}
+  .game .t{font:500 12.5px/1.5 "IBM Plex Mono",monospace; color:var(--muted); font-variant-numeric:tabular-nums}
+  .game.hot{border-color:var(--accent); box-shadow:inset 3px 0 0 var(--accent)}
+  .game.cold{opacity:.62}
+  .game .tag{font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--accent); font-weight:700}
+  .game.cold .tag{color:var(--danger)}
+  .picks{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px}
+  .pick{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; gap:8px}
+  .prow{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .pos{font:700 12px/1 "Barlow Condensed",Barlow,sans-serif; letter-spacing:.06em; background:var(--chip); border-radius:4px; padding:5px 7px; color:var(--muted); min-width:34px; text-align:center}
+  .pname{font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:700; font-size:21px; flex:1; min-width:120px}
+  .sal{font:600 14px/1 "IBM Plex Mono",monospace; background:var(--chip); padding:5px 8px; border-radius:4px}
+  .meta{font-size:12.5px; color:var(--muted); display:flex; gap:10px; flex-wrap:wrap}
+  .why{font-size:14px}
+  .fit{font-size:12px; color:var(--accent); font-weight:600}
+  .lock .sal{background:var(--accent); color:var(--accent-ink)}
+  .risky{border-left:3px solid var(--risk)} .risky .fit{color:var(--risk)}
+  .avoid{border-left:3px solid var(--danger)} .avoid .fit{color:var(--danger)}
+  .qtag{font:600 11px/1 "IBM Plex Mono",monospace; color:var(--risk)}
+  .feature{background:linear-gradient(135deg,var(--surface),var(--surface2)); border:1px solid var(--gold); border-radius:10px; padding:22px 24px}
+  .feature .big{font-family:"Barlow Condensed",Barlow,sans-serif; font-weight:800; font-size:clamp(30px,7vw,44px); line-height:1}
+  .feature .fsal{font:600 30px/1 "IBM Plex Mono",monospace; color:var(--gold)}
+  .feature p{margin:8px 0 0; max-width:64ch}
+  /* lessons — numbered because they ARE an ordered set of rules now in code */
+  .rules{display:grid; gap:8px}
+  .rule{display:grid; grid-template-columns:34px 1fr; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; align-items:start}
+  .rule .n{font:600 20px/1 "IBM Plex Mono",monospace; color:var(--danger)}
+  .rule b{font-family:"Barlow Condensed",Barlow,sans-serif; font-size:19px; letter-spacing:.01em}
+  .rule p{margin:4px 0 0; font-size:14px; color:var(--muted)}
+  .lus{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px}
+  .lu{background:var(--surface); border:1px solid var(--line); border-radius:8px; overflow:hidden}
+  .lu h3{padding:11px 14px; font-size:19px; text-transform:uppercase; background:var(--surface2); display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .lu h3 .b{font:600 12px/1 "IBM Plex Mono",monospace; color:var(--muted)}
+  .lu table{width:100%; border-collapse:collapse; font-size:13.5px}
+  .lu td{padding:6px 14px; border-top:1px solid var(--line)}
+  .lu td.s{font:500 12.5px "IBM Plex Mono",monospace; text-align:right; color:var(--muted); font-variant-numeric:tabular-nums}
+  .lu td.p{color:var(--muted); width:44px; font-weight:600; font-size:11.5px}
+  .stackrow{color:var(--accent); font-weight:600}
+  .exp{display:flex; flex-direction:column; gap:6px; max-width:560px}
+  .erow{display:grid; grid-template-columns:minmax(110px,150px) 1fr 34px; gap:10px; align-items:center; font-size:13.5px}
+  .ebar{height:10px; background:var(--surface2); border-radius:5px; overflow:hidden}
+  .ebar i{display:block; height:100%; background:var(--accent)}
+  .erow .n{font:500 12.5px "IBM Plex Mono",monospace; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums}
+  .capline{margin-top:10px; font-size:13px; color:var(--muted)}
+  .check{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:16px 20px; font-size:14.5px}
+  .check li{margin:5px 0}
+  .foot{margin-top:40px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:14px; max-width:74ch}
+</style>
+<div class="wrap">
+<header>
+  <div>
+    <div class="kick">DraftKings Classic · Main Slate · Sun Oct 18, 2026</div>
+    <h1>Week 6 War Room</h1>
+    <div class="sub">10 games, $50K cap. Lock <b>7:00 AM HST</b>; ARI@LAR, BUF@LV and LAC@KC stay swappable until 10:05–10:25. Every GPP lineup is now a full stack with a bring-back.</div>
+  </div>
+  <div class="targets">
+    <div class="target"><div class="n">125</div><div class="l">Cash line</div></div>
+    <div class="target gpp"><div class="n">235+</div><div class="l">Milly to win</div></div>
+    <div class="target"><div class="n">7</div><div class="l">Max lineups/player</div></div>
+  </div>
+</header>
+
+<section>
+  <div class="sechead"><h2>What Week 5 Changed</h2><div class="secnote">all four are enforced in the lineup builder</div></div>
+  <div class="rules">
+    <div class="rule"><div class="n">1</div><div><b>Every GPP lineup is a full stack</b><p>Quarterback, two of his pass catchers, and a bring-back from the other side. Last week's best possible lineup from our own pool scored 238 with a Green Bay stack we never built.</p></div></div>
+    <div class="rule"><div class="n">2</div><div><b>Cap lowered from 8 to 7 lineups</b><p>Five players sat at 8 of 30 last week, which crowded out the leverage plays that won. Quarterbacks are capped at 6.</p></div></div>
+    <div class="rule"><div class="n">3</div><div><b>One questionable player per lineup, none in cash</b><p>Caleb Williams and Nico Collins took two lineups to zero last week.</p></div></div>
+    <div class="rule"><div class="n">4</div><div><b>Inactive check is a hard step</b><p>At 5:30 AM, swap any inactive player before the 7:00 lock.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Slate Map</h2><div class="secnote">implied points per team, consensus lines Oct 16–17</div></div>
+  <div class="games"><div class="game hot"><div class="m">BUF @ LV</div><div class="t">BUF −5 · O/U 53.5</div><div class="t">BUF 29.25 / LV 24.25</div><div class="tag">Shootout · both sides</div></div><div class="game hot"><div class="m">ARI @ LAR</div><div class="t">LAR −12.5 · O/U 51.5</div><div class="t">LAR 32 / ARI 19.5</div><div class="tag">Top team total</div></div><div class="game hot"><div class="m">CHI @ ATL</div><div class="t">CHI −2.5 · O/U ~50</div><div class="t">CHI 26.25 / ATL 23.75</div><div class="tag">Books split on total</div></div><div class="game "><div class="m">NO @ NYG</div><div class="t">Pick · O/U 46</div><div class="t">NO 23 / NYG 23</div></div><div class="game "><div class="m">NYJ @ NE</div><div class="t">NE −7.5 · O/U 44</div><div class="t">NE 25.75 / NYJ 18.25</div></div><div class="game "><div class="m">TEN @ IND</div><div class="t">IND −7 · O/U 44.25</div><div class="t">IND 25.6 / TEN 18.6</div></div><div class="game "><div class="m">LAC @ KC</div><div class="t">KC −7.75 · O/U 42</div><div class="t">KC 24.9 / LAC 17.1</div><div class="tag">Rice out</div></div><div class="game cold"><div class="m">BAL @ CLE</div><div class="t">BAL −3.5 · O/U 41</div><div class="t">BAL 22.25 / CLE 18.75</div><div class="tag">Lamar out</div></div><div class="game cold"><div class="m">CAR @ PHI</div><div class="t">PHI −1 · O/U 41</div><div class="t">~20.5 each</div><div class="tag">Hurts out</div></div><div class="game cold"><div class="m">PIT @ TB</div><div class="t">PIT −2.5 · O/U 39.5</div><div class="t">PIT 21 / TB 18.5</div><div class="tag">Lowest total</div></div></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>💎 Value Pick of the Week</h2></div>
+  <div class="feature">
+    <div class="big">Dameon Pierce · RB · PHI</div>
+    <div class="meta" style="margin-top:8px"><span>CAR @ PHI · pick'em</span><span class="fsal">$5,100</span></div>
+    <p>Saquon Barkley is <b>out</b> and Will Shipley and Tank Bigsby are on IR, so Pierce is the Eagles' lead back. PFF projects <b>11.6</b> before accounting for a full workload. The risk is that Tanner McKee starts at quarterback for the injured Jalen Hurts, which caps how many points Philadelphia scores.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>🔒 Must-Haves</h2><div class="secnote">locked roles in the best environments</div></div>
+  <div class="picks"><div class="pick lock"><div class="prow"><span class="pos">WR</span><span class="pname">Puka Nacua</span><span class="sal">$8,100</span></div><div class="meta"><span>ARI@LAR · LAR 32 implied</span></div><div class="why">24 targets and 7 red-zone targets last week. 25.9 PPG on the slate's highest team total.</div><div class="fit">In all 5 cash lineups.</div></div><div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">Kyren Williams</span><span class="sal">$6,800</span></div><div class="meta"><span>ARI@LAR · LAR −12.5</span></div><div class="why">8 targets and 16 carries in Week 5, and he scored 7.2 below his expected points.</div></div><div class="pick lock"><div class="prow"><span class="pos">QB</span><span class="pname">Josh Allen</span><span class="sal">$7,500</span></div><div class="meta"><span>BUF@LV · BUF 29.25</span></div><div class="why">29.2 PPG in the slate's best game. The total moved from 47.5 to 53.5 this week.</div></div><div class="pick lock"><div class="prow"><span class="pos">TE</span><span class="pname">Brock Bowers</span><span class="sal">$7,500</span></div><div class="meta"><span>BUF@LV · LV 24.25</span></div><div class="why">24.4 PPG on the home side of the shootout.</div></div><div class="pick lock"><div class="prow"><span class="pos">QB</span><span class="pname">Kirk Cousins</span><span class="sal">$5,400</span></div><div class="meta"><span>BUF@LV · LV 24.25</span></div><div class="why">18.9 PPG at $5,400. Las Vegas has to throw to keep up.</div></div><div class="pick lock"><div class="prow"><span class="pos">WR</span><span class="pname">Malik Nabers</span><span class="sal">$6,500</span></div><div class="meta"><span>NO@NYG · pick'em</span></div><div class="why">18 targets last week, and he scored 5.6 below expected.</div></div><div class="pick lock"><div class="prow"><span class="pos">TE</span><span class="pname">Isaiah Likely</span><span class="sal">$4,800</span></div><div class="meta"><span>NO@NYG · pick'em</span></div><div class="why">13 targets and 32.4 points last week, at $4,800.</div></div><div class="pick lock"><div class="prow"><span class="pos">RB</span><span class="pname">D&#x27;Andre Swift</span><span class="sal">$6,700</span></div><div class="meta"><span>CHI@ATL · CHI 26.25</span></div><div class="why">Monangai is out again, so Swift has the backfield.</div></div></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>🚀 Risky · High Ceiling</h2><div class="secnote">GPP only, with the risk stated plainly</div></div>
+  <div class="picks"><div class="pick risky"><div class="prow"><span class="pos">QB</span><span class="pname">Caleb Williams</span><span class="sal">$6,200</span></div><div class="meta"><span>CHI@ATL · CHI 26.25</span><span class=qtag>Q · 3/30</span></div><div class="why">Returning from a hamstring after three weeks out. Reports say he plays, but he's officially questionable.</div></div><div class="pick risky"><div class="prow"><span class="pos">WR</span><span class="pname">Chris Olave</span><span class="sal">$7,600</span></div><div class="meta"><span>NO@NYG · pick'em</span><span class=qtag>Q · 4/30 max</span></div><div class="why">DraftKings tags him questionable. The Saints' final report lists no designation.</div></div><div class="pick risky"><div class="prow"><span class="pos">RB</span><span class="pname">Tyler Allgeier</span><span class="sal">$4,800</span></div><div class="meta"><span>ARI@LAR · ARI 19.5</span></div><div class="why">Jeremiyah Love is out, so Allgeier leads. He had 3 carries last week, so the role is unproven.</div></div><div class="pick risky"><div class="prow"><span class="pos">STK</span><span class="pname">Michael Penix Jr.</span><span class="sal">$5,000</span></div><div class="meta"><span>CHI@ATL · stack London + Pitts</span></div><div class="why">The leverage stack. Books disagree on this total by six points, so it could be a shootout or a dud.</div></div></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>⛔ Stay Away</h2></div>
+  <div class="picks"><div class="pick avoid"><div class="prow"><span class="pos">RB</span><span class="pname">Jaylen Warren</span><span class="sal">$7,000</span></div><div class="meta"><span>PIT@TB · lowest total</span></div><div class="why">36.8 points last week was 21.4 over expected, and DraftKings priced him up. Capped at 4/30.</div></div><div class="pick avoid"><div class="prow"><span class="pos">RB</span><span class="pname">Derrick Henry</span><span class="sal">$8,200</span></div><div class="meta"><span>BAL@CLE · Lamar out</span></div><div class="why">Tyler Huntley at QB means stacked boxes in a 41-point game, at $8,200.</div></div><div class="pick avoid"><div class="prow"><span class="pos">RB</span><span class="pname">Bucky Irving</span><span class="sal">$6,200</span></div><div class="meta"><span>PIT@TB · TB 18.5</span></div><div class="why">31.5 points last week, 10 over expected, now in the slate's lowest total.</div></div><div class="pick avoid"><div class="prow"><span class="pos">WR</span><span class="pname">Zay Flowers</span><span class="sal">$7,100</span></div><div class="meta"><span>BAL@CLE · backup QB</span></div><div class="why">$7,100 with Tyler Huntley throwing to him.</div></div></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Flagship Lineups</h2><div class="secnote">all 30 are in the upload file; projections are Claude estimates</div></div>
+  <div class="lus">
+    <div class="lu"><h3>Cash #1 <span class="b">$49,500 · est 133.5</span></h3><table><tr><td class="p">QB</td><td>Kirk Cousins</td><td class="s">$5,400</td></tr><tr><td class="p">RB</td><td>Kyren Williams</td><td class="s">$6,800</td></tr><tr><td class="p">RB</td><td>Ashton Jeanty</td><td class="s">$6,500</td></tr><tr><td class="p">WR</td><td>Puka Nacua</td><td class="s">$8,100</td></tr><tr><td class="p">WR</td><td>Michael Wilson</td><td class="s">$6,700</td></tr><tr><td class="p">WR</td><td>Xavier Worthy</td><td class="s">$4,600</td></tr><tr><td class="p">TE</td><td>Michael Mayer</td><td class="s">$3,200</td></tr><tr><td class="p">FLEX</td><td>Braelon Allen</td><td class="s">$5,700</td></tr><tr><td class="p">DST</td><td>Panthers</td><td class="s">$2,500</td></tr></table><div class="capline" style="padding:8px 14px 12px">Floor build: Puka and Kyren from the top team total, Cousins and Jeanty from the best game, Panthers defense against a backup QB.</div></div>
+    <div class="lu"><h3>GPP #25 · Rams stack <span class="b">$49,500 · est 129.5</span></h3><table><tr><td class="p">QB</td><td>Matthew Stafford</td><td class="s">$6,400</td></tr><tr><td class="p">RB</td><td>D&#x27;Andre Swift</td><td class="s">$6,700</td></tr><tr><td class="p">RB</td><td>Chuba Hubbard</td><td class="s">$6,300</td></tr><tr><td class="p">WR</td><td>Puka Nacua</td><td class="s">$8,100</td></tr><tr><td class="p">WR</td><td>Michael Wilson</td><td class="s">$6,700</td></tr><tr><td class="p">WR</td><td>Tre Tucker</td><td class="s">$4,700</td></tr><tr><td class="p">TE</td><td>Tyler Higbee</td><td class="s">$3,400</td></tr><tr><td class="p">FLEX</td><td>Germie Bernard</td><td class="s">$4,000</td></tr><tr><td class="p">DST</td><td>Ravens</td><td class="s">$3,200</td></tr></table><div class="capline" style="padding:8px 14px 12px">Stafford, Puka and Higbee, with Michael Wilson as the bring-back.</div></div>
+    <div class="lu"><h3>GPP #24 · BUF@LV stack <span class="b">$49,300 · est 120.0</span></h3><table><tr><td class="p">QB</td><td>Kirk Cousins</td><td class="s">$5,400</td></tr><tr><td class="p">RB</td><td>Cam Skattebo</td><td class="s">$5,800</td></tr><tr><td class="p">RB</td><td>Dameon Pierce</td><td class="s">$5,100</td></tr><tr><td class="p">WR</td><td>Garrett Wilson</td><td class="s">$6,800</td></tr><tr><td class="p">WR</td><td>DK Metcalf</td><td class="s">$5,700</td></tr><tr><td class="p">WR</td><td>Tre Tucker</td><td class="s">$4,700</td></tr><tr><td class="p">TE</td><td>Brock Bowers</td><td class="s">$7,500</td></tr><tr><td class="p">FLEX</td><td>Dalton Kincaid</td><td class="s">$5,100</td></tr><tr><td class="p">DST</td><td>Ravens</td><td class="s">$3,200</td></tr></table><div class="capline" style="padding:8px 14px 12px">Cousins, Tre Tucker and Bowers, with Kincaid as the bring-back.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Portfolio Exposure</h2><div class="secnote">5 cash + 25 GPP · top 16 players</div></div>
+  <div class="exp"><div class="erow"><span>Kyren Williams</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>Puka Nacua</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>Michael Wilson</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>Xavier Worthy</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>D&#x27;Andre Swift</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>Germie Bernard</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>Davante Adams</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>Dameon Pierce</span><div class="ebar"><i style="width:100%"></i></div><span class="n">7</span></div><div class="erow"><span>Ashton Jeanty</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div><div class="erow"><span>Michael Mayer</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div><div class="erow"><span>Malik Nabers</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div><div class="erow"><span>Tre Tucker</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div><div class="erow"><span>Isaiah Likely</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div><div class="erow"><span>Browns</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div><div class="erow"><span>James Cook III</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div><div class="erow"><span>Tyler Higbee</span><div class="ebar"><i style="width:86%"></i></div><span class="n">6</span></div></div>
+  <p class="capline">Cap is 7 of 30. Ten different quarterbacks anchor the 25 GPP stacks.</p>
+</section>
+
+<section>
+  <div class="sechead"><h2>Before Lock</h2><div class="secnote">Hawaii time</div></div>
+  <div class="check"><ul>
+    <li><b>5:30 AM inactives:</b> Caleb Williams, Olave, DJ Moore, Tyler Warren, Judkins, Freiermuth.</li>
+    <li><b>If Caleb is out:</b> replace him with Cousins or Winston, and swap his Bears pass catchers out of those three lineups.</li>
+    <li><b>If Olave is out:</b> swap him for Devaughn Vele.</li>
+    <li><b>7:00 AM:</b> early games lock. Rams, Cardinals, Bills, Raiders, Chargers and Chiefs players can be swapped until 10:05.</li>
+    <li><b>Bankroll:</b> keep this slate at 5–10% of bankroll and log the entries.</li>
+  </ul></div>
+</section>
+
+<div class="foot">Sources: PFF+ Week 6 export with DraftKings salaries (Oct 17), and lines and injury reports from Fox Sports, CBS Sports, Yahoo, Covers, Vegas Insider, ESPN, NBC Sports and team sites, Oct 16–18. Projections and ownership are Claude estimates.</div>
+</div>
