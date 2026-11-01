@@ -38,3 +38,9 @@ research process in `.claude/skills/weekly-picks/` using the reference docs belo
 Each week's research gets saved as `weeks/2026-wkNN.md` using
 [weeks/TEMPLATE.md](weeks/TEMPLATE.md), so we can track our process and results
 over the season.
+
+## Data on file
+
+- `data/2026-wkNN-DKSalaries.csv` — DraftKings main-slate salary export for each week
+- `data/pff/2026/wkNN/` — weekly PFF+ package (start with `README_for_Claude.md`, then `master_players_wkNN.csv`)
+- `data/pff/history/` — PFF 2020–2025 history (stats, expected points, grades, player/team trends), shared across weeks
