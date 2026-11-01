@@ -11,6 +11,9 @@ players to pick each week.
   Workflow: compare PFF projections to Kalshi prices, buy only with a clear edge,
   prefer 2–4 single contracts over combos. Kalshi's Hawaii status is contested
   (9th Cir. ruling, Oct 2026 class action), so re-check access periodically.
+  $350 is fun money with **no further deposits**; goal is to grow it and withdraw
+  profits. Follow docs/kalshi-strategy.md (quarter-Kelly sizing, limit orders,
+  withdraw half of each $100 gain).
 - Previously built **DraftKings Classic** contests only (QB / 2 RB / 3 WR / TE / FLEX /
   DST, $50K cap), NFL only, during the NFL season.
 - Stakes: **serious — $100+/week.** Bankroll discipline matters: log every
