@@ -7,7 +7,8 @@ players to pick each week.
 ## User profile (Chris's preferences)
 
 - **As of Nov 2026 Chris trades NFL props on Kalshi, not DraftKings** (DK DFS is
-  illegal in Hawaii). Bankroll **$350**; size $17–35 risk/week, $5–15 per contract.
+  illegal in Hawaii). Bankroll **$350**; risk ≤15% of current balance per week, ≤5% per contract
+  (quarter Kelly, see docs/kalshi-strategy.md).
   Workflow: compare PFF projections to Kalshi prices, buy only with a clear edge,
   prefer 2–4 single contracts over combos. Kalshi's Hawaii status is contested
   (9th Cir. ruling, Oct 2026 class action), so re-check access periodically.
